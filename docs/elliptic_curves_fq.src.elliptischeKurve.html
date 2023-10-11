@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<html><head><title>Python: module elliptic_curves_fq.src.elliptischeKurve</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+</head><body bgcolor="#f0f0f8">
+
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="heading">
+<tr bgcolor="#7799ee">
+<td valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial">&nbsp;<br><big><big><strong><a href="elliptic_curves_fq.html"><font color="#ffffff">elliptic_curves_fq</font></a>.<a href="elliptic_curves_fq.src.html"><font color="#ffffff">src</font></a>.elliptischeKurve</strong></big></big></font></td
+><td align=right valign=bottom
+><font color="#ffffff" face="helvetica, arial"><a href=".">index</a><br><a href="file:c%3A%5Cusers%5Ckaspa%5Cappdata%5Clocal%5Cpackages%5Cpythonsoftwarefoundation.python.3.10_qbz5n2kfra8p0%5Clocalcache%5Clocal-packages%5Cpython310%5Csite-packages%5Celliptic_curves_fq%5Csrc%5Celliptischekurve.py">c:\users\kaspa\appdata\local\packages\pythonsoftwarefoundation.python.3.10_qbz5n2kfra8p0\localcache\local-packages\python310\site-packages\elliptic_curves_fq\src\elliptischekurve.py</a></font></td></tr></table>
+    <p><tt>Implementation&nbsp;von&nbsp;Elliptischen&nbsp;Kurven&nbsp;und&nbsp;deren&nbsp;Aretmetic&nbsp;über&nbsp;endliche&nbsp;Körper</tt></p>
+<p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#aa55cc">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Modules</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#aa55cc"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><table width="100%" summary="list"><tr><td width="25%" valign=top><a href="math.html">math</a><br>
+</td><td width="25%" valign=top></td><td width="25%" valign=top></td><td width="25%" valign=top></td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ee77aa">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Classes</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#ee77aa"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl>
+<dt><font face="helvetica, arial"><a href="builtins.html#object">builtins.object</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="elliptic_curves_fq.src.elliptischeKurve.html#Points">Points</a>
+</font></dt><dt><font face="helvetica, arial"><a href="elliptic_curves_fq.src.elliptischeKurve.html#curve">curve</a>
+</font></dt><dd>
+<dl>
+<dt><font face="helvetica, arial"><a href="elliptic_curves_fq.src.elliptischeKurve.html#curve_Fpn">curve_Fpn</a>
+</font></dt></dl>
+</dd>
+</dl>
+</dd>
+</dl>
+ <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="Points">class <strong>Points</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#Points">Points</a>(Point,&nbsp;Curve)<br>
+&nbsp;<br>
+Klasse&nbsp;eines&nbsp;Punktes&nbsp;auf&nbsp;einer&nbsp;Bestimmten&nbsp;Elliptische&nbsp;Kurve<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="Points-__add__"><strong>__add__</strong></a>(self, Point2)</dt><dd><tt>Addtion&nbsp;von&nbsp;zwei&nbsp;Punkten&nbsp;auf&nbsp;der&nbsp;Elliptischen&nbsp;Kurve</tt></dd></dl>
+
+<dl><dt><a name="Points-__eq__"><strong>__eq__</strong></a>(self, other)</dt><dd><tt>Gibt&nbsp;Bool&nbsp;zurück,&nbsp;ob&nbsp;zwei&nbsp;Elemente&nbsp;dieser&nbsp;Klasse&nbsp;Identisch&nbsp;sind.</tt></dd></dl>
+
+<dl><dt><a name="Points-__init__"><strong>__init__</strong></a>(self, Point, Curve)</dt><dd><tt>Konstruktor&nbsp;der&nbsp;Klasse.&nbsp;x&nbsp;und&nbsp;y&nbsp;werden&nbsp;vom&nbsp;Punkt&nbsp;eingetragen</tt></dd></dl>
+
+<dl><dt><a name="Points-__mul__"><strong>__mul__</strong></a>(self, Faktor)</dt><dd><tt>Punkt&nbsp;Multiplikation&nbsp;sprich&nbsp;aufaddierung&nbsp;des&nbsp;selben&nbsp;Punktes&nbsp;n-mal.&nbsp;Mit&nbsp;square&nbsp;and&nbsp;multiply&nbsp;laufzeit&nbsp;von&nbsp;(log(n))</tt></dd></dl>
+
+<dl><dt><a name="Points-__repr__"><strong>__repr__</strong></a>(self)</dt><dd><tt>Bei&nbsp;print&nbsp;falls&nbsp;in&nbsp;Liste,&nbsp;werden&nbsp;<a href="#Points">Points</a>(x,y)&nbsp;ausgedrückt</tt></dd></dl>
+
+<dl><dt><a name="Points-__str__"><strong>__str__</strong></a>(self)</dt><dd><tt>Wenn&nbsp;Punkt&nbsp;geprinted&nbsp;wird,&nbsp;x&nbsp;und&nbsp;y&nbsp;werden&nbsp;ausgedruckt</tt></dd></dl>
+
+<dl><dt><a name="Points-__sub__"><strong>__sub__</strong></a>(self, other)</dt><dd><tt>Subtraktion&nbsp;durch&nbsp;aufaddieren&nbsp;des&nbsp;inversen&nbsp;Punktes</tt></dd></dl>
+
+<dl><dt><a name="Points-generate"><strong>generate</strong></a>(self)</dt><dd><tt>Gruppe,&nbsp;die&nbsp;mit&nbsp;wiederholter&nbsp;addition&nbsp;von&nbsp;einem&nbsp;Punkt&nbsp;erzeugt&nbsp;wird.&nbsp;Laufzeit&nbsp;log(q)&nbsp;und&nbsp;smoit&nbsp;nur&nbsp;bei&nbsp;kleinen&nbsp;Kurven&nbsp;Möglich</tt></dd></dl>
+
+<dl><dt><a name="Points-invminus"><strong>invminus</strong></a>(self)</dt></dl>
+
+<dl><dt><a name="Points-on_Curve"><strong>on_Curve</strong></a>(self)</dt><dd><tt>Überprüft&nbsp;ob&nbsp;ein&nbsp;Punkt&nbsp;wirklich&nbsp;auf&nbsp;der&nbsp;Kurve&nbsp;ist,&nbsp;indem&nbsp;es&nbsp;checkt&nbsp;ob&nbsp;y^2&nbsp;==&nbsp;x^3&nbsp;+&nbsp;ax&nbsp;+&nbsp;b.&nbsp;Gint&nbsp;Bool&nbsp;zurück</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__hash__</strong> = None</dl>
+
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="curve">class <strong>curve</strong></a>(<a href="builtins.html#object">builtins.object</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#curve">curve</a>(a,&nbsp;b,&nbsp;p,&nbsp;Point,&nbsp;order)<br>
+&nbsp;<br>
+Klasse&nbsp;einer&nbsp;Eliptischen&nbsp;Kurve&nbsp;mit&nbsp;deren&nbsp;Eigenschaften<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%">Methods defined here:<br>
+<dl><dt><a name="curve-__init__"><strong>__init__</strong></a>(self, a, b, p, Point, order)</dt><dd><tt>Konstruktor&nbsp;der&nbsp;Klasse.&nbsp;Parameter&nbsp;a,&nbsp;b,&nbsp;p/ireduzibles&nbsp;Polynom,&nbsp;Startpunkt,&nbsp;Ordnung</tt></dd></dl>
+
+<dl><dt><a name="curve-bound"><strong>bound</strong></a>(self)</dt><dd><tt>Ordnung&nbsp;der&nbsp;Gruppe&nbsp;der&nbsp;Elliptischen&nbsp;Kurve&nbsp;nach&nbsp;Hasses&nbsp;Abschätzung&nbsp;gege&nbsp;unten&nbsp;und&nbsp;oben</tt></dd></dl>
+
+<dl><dt><a name="curve-compute"><strong>compute</strong></a>(self, x, y)</dt><dd><tt>Gibt&nbsp;den&nbsp;Wert&nbsp;von&nbsp;links&nbsp;und&nbsp;rechts&nbsp;der&nbsp;Gleichung:&nbsp;y^2&nbsp;=&nbsp;x^3&nbsp;+&nbsp;ax&nbsp;+&nbsp;b&nbsp;an,&nbsp;mit&nbsp;Argumenten&nbsp;x&nbsp;und&nbsp;y</tt></dd></dl>
+
+<dl><dt><a name="curve-discriminante_is_zero"><strong>discriminante_is_zero</strong></a>(self)</dt><dd><tt>Diskrmminante&nbsp;=&nbsp;4a^3&nbsp;+&nbsp;27b^2.&nbsp;Falls&nbsp;dies&nbsp;0&nbsp;ist&nbsp;True&nbsp;zurückgegeben</tt></dd></dl>
+
+<hr>
+Data descriptors defined here:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table> <p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#ffc8d8">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#000000" face="helvetica, arial"><a name="curve_Fpn">class <strong>curve_Fpn</strong></a>(<a href="elliptic_curves_fq.src.elliptischeKurve.html#curve">curve</a>)</font></td></tr>
+    
+<tr bgcolor="#ffc8d8"><td rowspan=2><tt>&nbsp;&nbsp;&nbsp;</tt></td>
+<td colspan=2><tt><a href="#curve_Fpn">curve_Fpn</a>(a,&nbsp;b,&nbsp;p,&nbsp;ir_poly,&nbsp;Point,&nbsp;order)<br>
+&nbsp;<br>
+<br>&nbsp;</tt></td></tr>
+<tr><td>&nbsp;</td>
+<td width="100%"><dl><dt>Method resolution order:</dt>
+<dd><a href="elliptic_curves_fq.src.elliptischeKurve.html#curve_Fpn">curve_Fpn</a></dd>
+<dd><a href="elliptic_curves_fq.src.elliptischeKurve.html#curve">curve</a></dd>
+<dd><a href="builtins.html#object">builtins.object</a></dd>
+</dl>
+<hr>
+Methods defined here:<br>
+<dl><dt><a name="curve_Fpn-__init__"><strong>__init__</strong></a>(self, a, b, p, ir_poly, Point, order)</dt><dd><tt>Konstruktor&nbsp;der&nbsp;Klasse.&nbsp;Parameter&nbsp;a,&nbsp;b,&nbsp;p/ireduzibles&nbsp;Polynom,&nbsp;Startpunkt,&nbsp;Ordnung</tt></dd></dl>
+
+<dl><dt><a name="curve_Fpn-bound"><strong>bound</strong></a>(self)</dt><dd><tt>Ordnung&nbsp;der&nbsp;Gruppe&nbsp;der&nbsp;Elliptischen&nbsp;Kurve&nbsp;nach&nbsp;Hasses&nbsp;Abschätzung&nbsp;gege&nbsp;unten&nbsp;und&nbsp;oben</tt></dd></dl>
+
+<dl><dt><a name="curve_Fpn-compute"><strong>compute</strong></a>(self, x, y)</dt><dd><tt>Gibt&nbsp;den&nbsp;Wert&nbsp;von&nbsp;links&nbsp;und&nbsp;rechts&nbsp;der&nbsp;Gleichung:&nbsp;y^2&nbsp;=&nbsp;x^3&nbsp;+&nbsp;ax&nbsp;+&nbsp;b&nbsp;an,&nbsp;mit&nbsp;Argumenten&nbsp;x&nbsp;und&nbsp;y</tt></dd></dl>
+
+<dl><dt><a name="curve_Fpn-discriminante_is_zero"><strong>discriminante_is_zero</strong></a>(self)</dt><dd><tt>Diskrmminante&nbsp;=&nbsp;4a^3&nbsp;+&nbsp;27b^2.&nbsp;Falls&nbsp;dies&nbsp;0&nbsp;ist&nbsp;True&nbsp;zurückgegeben</tt></dd></dl>
+
+<hr>
+Data and other attributes defined here:<br>
+<dl><dt><strong>__slotnames__</strong> = []</dl>
+
+<hr>
+Data descriptors inherited from <a href="elliptic_curves_fq.src.elliptischeKurve.html#curve">curve</a>:<br>
+<dl><dt><strong>__dict__</strong></dt>
+<dd><tt>dictionary&nbsp;for&nbsp;instance&nbsp;variables&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+<dl><dt><strong>__weakref__</strong></dt>
+<dd><tt>list&nbsp;of&nbsp;weak&nbsp;references&nbsp;to&nbsp;the&nbsp;object&nbsp;(if&nbsp;defined)</tt></dd>
+</dl>
+</td></tr></table></td></tr></table><p>
+<table width="100%" cellspacing=0 cellpadding=2 border=0 summary="section">
+<tr bgcolor="#eeaa77">
+<td colspan=3 valign=bottom>&nbsp;<br>
+<font color="#ffffff" face="helvetica, arial"><big><strong>Functions</strong></big></font></td></tr>
+    
+<tr><td bgcolor="#eeaa77"><tt>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</tt></td><td>&nbsp;</td>
+<td width="100%"><dl><dt><a name="-on_Curve"><strong>on_Curve</strong></a>(Point, Curve)</dt><dd><tt>Überprüft&nbsp;ob&nbsp;ein&nbsp;Punkt&nbsp;wirklich&nbsp;auf&nbsp;der&nbsp;Kurve&nbsp;ist,&nbsp;indem&nbsp;es&nbsp;checkt&nbsp;ob&nbsp;y^2&nbsp;==&nbsp;x^3&nbsp;+&nbsp;ax&nbsp;+&nbsp;b.&nbsp;Gint&nbsp;Bool&nbsp;zurück</tt></dd></dl>
+</td></tr></table>
+</body></html>
