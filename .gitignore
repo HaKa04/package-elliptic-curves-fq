@@ -1,0 +1,7 @@
+# Ignore Python bytecode cache files
+**/src/__pycache__/
+*.pyc
+*.pyo
+__pycache__/
+dist/
+build/
