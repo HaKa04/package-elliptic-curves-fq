@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.1.6'
+VERSION = '0.2.0'
 DESCRIPTION = 'ECC Library'
 
 with open("README.md", "r") as f:
@@ -18,7 +18,7 @@ setup(
     package_dir={"": "app"},
     packages=find_packages(where="app"),
     install_requires=[],
-    keywords=['python', 'ECC', 'finite Fields'],
+    keywords=['python', 'ECC', 'Finite Fields'],
     license="MIT",
     classifiers=[
         "Development Status :: 1 - Planning",
