@@ -119,17 +119,6 @@ def remainderTl(Curve,l):
     if q_mod_l > l / 2 :
         q_mod_l -= l
 
-
-
-
-
-
-
-
-
-    if l == 3 : return 0
-    if l == 5: return 1
-    if l == 7: return 5
     return 1
 
 
