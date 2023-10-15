@@ -1,7 +1,7 @@
 # Bibliothek zur Aretmetik elliptischer Kurven
 
 ## Beschreibung :pencil:
-Diese Bibliothek bietet Funktionalitäten für elliptische Kurven über endlichen Körpern $F_{p^n}$. Sie ermöglicht unter anderem Berechnungen auf elliptischen Kurven.
+Diese Bibliothek bietet Funktionalitäten für elliptische Kurven über endlichen Körpern $\mathbb{F}_{p^n}$. Sie ermöglicht unter anderem Berechnungen auf elliptischen Kurven.
 
 ## Verwendung :computer:
 Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden Schritte ausführen:
@@ -23,7 +23,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
 
 3. **Klassen und ihre Verwendung :gear::**
 
-   - **Fp:** Stellt ein endlichen Körper $F_p$ bereit und unterstützt arithmetische Operationen wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Überschreiben der vorhandenen Operationen von Python. 
+   - **Fp:** Stellt ein endlichen Körper $\mathbb{F}_p$ bereit und unterstützt arithmetische Operationen wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Überschreiben der vorhandenen Operationen von Python. 
 
      - **Parameter:**
        - `element` (int): Ein Element im endlichen Körper.
@@ -39,7 +39,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
      print(element - 10) # Ausgabe 20
      print(element ** 2) # Ausgabe 3
      ```
-   - **get_irreductible_polynomial:** Erlaubt die Generierung eines irreduziblen Polynoms über einem endlichen Körper $F_{p}$.
+   - **get_irreductible_polynomial:** Erlaubt die Generierung eines irreduziblen Polynoms über einem endlichen Körper $\mathbb{F}_{p}$.
 
      - **Parameter:**
        - `p` (int): Die Primzahl, die den endlichen Körper definiert.
@@ -55,12 +55,12 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
      print(attempts)  # Ausgabe: 3 (Anzahl der Versuche, die benötigt wurden, um das irreduzible Polynom zu generieren.)
      ```
 
-   - **Fpn:** Erlaubt das Rechnen mit endlichen Körpern $F_{p^n}$ und bietet Methoden wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Überschreiben der vorhandenen Operationen von Python.
+   - **Fpn:** Erlaubt das Rechnen mit endlichen Körpern $\mathbb{F}_{p^n}$ und bietet Methoden wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Überschreiben der vorhandenen Operationen von Python.
 
      - **Parameter:**
-       - `p` (int): Eine Primzahl, die $F_p$ definiert.
-       - `irreducible_poly` (list): Ein irreduzibles Polynom über diesem Körper. Definiert den Körper $F_{p^n}$ 
-       - `element` (list): Ein Element von $F_{p^n}$.
+       - `p` (int): Eine Primzahl, die $\mathbb{F}_p$ definiert.
+       - `irreducible_poly` (list): Ein irreduzibles Polynom über diesem Körper. Definiert den Körper $\mathbb{F}_{p^n}$ 
+       - `element` (list): Ein Element von $\mathbb{F}_{p^n}$.
 
      ```python
      from elliptic_curves_fq import Fpn
@@ -74,7 +74,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
      print(element ** 5) #Ausgabe [6, 7, 12]
      ```
 
-   - **curve:** Ermöglicht die Arbeit mit elliptischen Kurven über endlichen Körpern $F_{p}$. Eine elliptische Kurve hat die folgende Form $$y^2 = x^3 + ax + b$$
+   - **curve:** Ermöglicht die Arbeit mit elliptischen Kurven über endlichen Körpern $\mathbb{F}_{p}$. Eine elliptische Kurve hat die folgende Form $$y^2 = x^3 + ax + b$$
 
      - **Parameter:**
        - `a` (int): Der Koeffizient 'a' der elliptischen Kurve.
@@ -95,13 +95,13 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
      print(curve)  # Ausgabe: curve( a = 12, b = 6, p = 17, Startpoint = (8, 11), ord = None)
      ```
 
-   - **curve_Fpn:** Ermöglicht die Arbeit mit elliptischen Kurven über endlichen Körpern $F_{p^n}$. 
+   - **curve_Fpn:** Ermöglicht die Arbeit mit elliptischen Kurven über endlichen Körpern $\mathbb{F}_{p^n}$. 
 
      - **Parameter:**
        - `a` (list): Der Koeffizient 'a' der elliptischen Kurve.
        - `b` (list): Der Koeffizient 'b' der elliptischen Kurve.
-       - `p` (int): Eine Primzahl, die die Basis für den endlichen Körper $F_p$ ist.
-       - `irreducible_poly` (list): Ein irreduzibles Polynom über $F_p$ , welches den Körper $F_{p^n}$ definiert.
+       - `p` (int): Eine Primzahl, die die Basis für den endlichen Körper $\mathbb{F}_p$ ist.
+       - `irreducible_poly` (list): Ein irreduzibles Polynom über $\mathbb{F}_p$ , welches den Körper $\mathbb{F}_{p^n}$ definiert.
        - `start_point` (list[list,list]): Ein Startpunkt auf der elliptischen Kurve.
        - `ord` (int): Die Ordnung der Kurve.
      - Die Koeffizienten a und b werden direkt zu Objekten der Klasse Fpn gemacht.
