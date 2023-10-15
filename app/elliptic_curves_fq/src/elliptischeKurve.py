@@ -4,9 +4,9 @@ from .endlicherKoerper_Fpn import Fpn
 import math
 
 class curve:
-    ' Klasse einer Eliptischen Kurve mit deren Eigenschaften'
+    ' Klasse einer Eliptischen Kurve über Fp'
     def __init__(self, a, b, p, Point, order):
-        'Konstruktor der Klasse. Parameter a, b, p/ireduzibles Polynom, Startpunkt, Ordnung'
+        'Konstruktor der Klasse. Parameter a, b, p, Startpunkt, Ordnung'
         self.a = Fp(a,p)
         self.b = Fp(b,p)
         self.p = p
@@ -23,14 +23,16 @@ class curve:
             return[(y**2 %self.p), (x**3 + x * self.a.value + self.b.value) % self.p ]
 
     def discriminante_is_zero(self):
-        ' Diskrmminante = 4a^3 + 27b^2. Falls dies 0 ist True zurückgegeben'
+        ' Diskrmminante = 4a^3 + 27b^2. Falls dies 0 ist True zurückgegeben. Ansonsten False'
         disc = (self.a * self.a * self.a * 4 + self.b * self.b * 27)
         if disc.value == 0:
             return True
         else: return False
                 
 class curve_Fpn(curve):
+    'Klasse einer Eliptischen Kurve über Fpn'
     def __init__(self,a,b,p,ir_poly,Point,order):
+        'Konstruktor der Klasse. Parameter a, b, p, ir_poly, Startpunkt, Ordnung'
         self.a = Fpn(p,ir_poly,a)
         self.b = Fpn(p,ir_poly,b)
         self.p = p
@@ -50,7 +52,7 @@ class curve_Fpn(curve):
         return [(y**2).value, (x**3 + x * self.a + self.b).value]
         
     def discriminante_is_zero(self):
-        ' Diskrmminante = 4a^3 + 27b^2. Falls dies 0 ist True zurückgegeben'
+        ' Diskrmminante = 4a^3 + 27b^2. Falls dies 0 ist True zurückgegeben. Ansonsten False.'
         disc = (self.a * self.a * self.a * 4 + self.b * self.b * 27)
         if sum(disc.value) == 0:
             return True
@@ -86,7 +88,7 @@ class Points:
         elif self.x == "inf":
             return (self.x)
     def __repr__(self):
-        ' Bei print falls in Liste, werden Points(x,y) ausgedrückt'
+        ' Bei repr Command wird der Punkt dargestellt'
         return f"Points({self.x}, {self.y})"
         
     def __add__ (self, Point2):

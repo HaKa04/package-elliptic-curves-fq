@@ -4,7 +4,8 @@ import copy
 import random
 
 
-def gcd_is_linear(f,Poly):
+def gcd_is_one(f,Poly):
+    'Euklidischer Algorithmus für zwei Polynome. Es schaut ob der grösse gemeinsmae Teiler linear ist.'
     a = copy.copy(f)
     b= Poly.value
     while sum(b)!= 0:
@@ -26,17 +27,19 @@ def gcd_is_linear(f,Poly):
         return True
 
 def is_irreductible(p, f):
+    'Überprüft ob ein Polynom irreduzibel ist'
     degree = len(f)-1
     d = degree // 2 
     Poly = Fpn(p,f,[1,0])
     for i in range(1, d+1):
         Poly = Poly**p
-        if gcd_is_linear(f,Poly-[1,0]):
+        if gcd_is_one(f,Poly-[1,0]):
             continue
         else:
             return(False)
     return True       
 def get_irreductible_polynomial(p,n):
+    'generiert ein zufälliges irreduzibles Polynom'
     a=0
     while True:
         a+=1

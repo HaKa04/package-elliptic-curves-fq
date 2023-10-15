@@ -8,7 +8,7 @@ def extended_gcd(a, b):
         return [gcd, y - (b // a) * x, x]
  
 def solve_for_a(Modules, Rests):
-    'Liste von verschiedenen Modulos und eine andere List mit zugrhörigen Resten. die Zahl für welche dies alles zutrifft, wird hier berechnet'
+    'Chinesischer Restsatz Algorithmus. Eingabe ist eine Liste von verschiedenen Modulos und eine andere List mit den zugrhörigen Resten. Die Zahl für welche dies alles zutrifft, wird hier berechnet.'
     adds = []
     n = 1
     for i in Modules: 

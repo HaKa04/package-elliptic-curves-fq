@@ -1,3 +1,4 @@
+'Not fininished Algorithm!'
 'Schoof algorithmus, um Ordung der Elliptischen Kurve zu bestimmen'
 from .Kurven import ord353
 from .elliptischeKurve import on_Curve

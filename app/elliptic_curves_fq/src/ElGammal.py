@@ -1,6 +1,6 @@
 from .Kurven import ord353
 import random
-
+'El Gammal verschlüsselung, aber nicht als Funktion sondern für eigene Tests'
 'innit'
 Kurve = ord353()
 startpunkt = Kurve.startpoint

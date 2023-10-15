@@ -9,7 +9,7 @@ def Menezes_Vanstone_encrybtion(message, curve, publickey):
         if curve.ord != None:
             zi = random.randrange(curve.ord) # int
         else: 
-            zi = random.randrange(int(curve.bound()[0])) # int
+            zi = random.randrange(curve.q) # int
         keys.append(zi)
         Ri = curve.startpoint * zi # Point
         Si = publickey * zi #Point
