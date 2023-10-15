@@ -102,9 +102,9 @@ class Fpn:
         'r(x) der Methode div. Als Liste dargestellt'
         return (self.div(self.value,other)[1])
     
-    def __floordiv__(self,value,other):
+    def __floordiv__(self,other):
         'q(x) der Methode div. Als Liste dargestellt'
-        return (self.div(value,other)[0])
+        return (self.div(self.value,other)[0])
     
     def __invert__(self):
         'gibt inverses Element eines Vertreters im Körper F(p^n) / ireduziblem Polynom an. Wird mit Hilfe des erweiterten Euklidischen Algorithmus für Polynome über Fp berechnet'

@@ -22,9 +22,9 @@ class curve:
     def compute(self,x,y):
         ' Gibt den Wert von links und rechts der Gleichung: y^2 = x^3 + ax + b an, mit Argumenten x und y'
         if isinstance(x,Fp):
-            return [(y**2).value, (x**3 + x * self.a + self.b).value]
+            return [ (x**3 + x * self.a + self.b).value, (y**2).value]
         else:
-            return[(y**2 %self.p), (x**3 + x * self.a.value + self.b.value) % self.p ]
+            return[(x**3 + x * self.a.value + self.b.value) % self.p, (y**2 %self.p)]
 
     def discriminante_is_zero(self):
         ' Diskrmminante = 4a^3 + 27b^2. Falls dies 0 ist True zurückgegeben. Ansonsten False'
@@ -55,7 +55,7 @@ class curve_Fpn(curve):
         if not isinstance(x,Fpn):
             x = Fpn(self.p, self.ir_poly,x)
             y = Fpn(self.p, self.ir_poly,y)
-        return [(y**2).value, (x**3 + x * self.a + self.b).value]
+        return [(x**3 + x * self.a + self.b).value, (y**2).value]
         
     def discriminante_is_zero(self):
         ' Diskrmminante = 4a^3 + 27b^2. Falls dies 0 ist True zurückgegeben. Ansonsten False.'

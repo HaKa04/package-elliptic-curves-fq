@@ -30,7 +30,7 @@ def get_randomcurve(p, n=1, should_print = True):
                 print("x = ", x)
                 print("y = " ,y)
                 print("Kurve wurde erfolgreich generiert. Hier die Kurve um abzuspeichern.")
-                print(f"Kurve = eG.curve({a},{b},{p},[{x},{y}],None)")
+                print(f"Kurve = curve({a},{b},{p},[{x},{y}],None)")
             return Kurve
 
         else:
@@ -63,5 +63,5 @@ def get_randomcurve(p, n=1, should_print = True):
         print("x = ", x)
         print("y = " ,y)
         print("Kurve wurde erfolgreich generiert. Hier die Kurve um abzuspeichern.")
-        print(f"Kurve = eG.curve_Fpn({a},{b},{p},{ir_poly},[{x},{y}],None)")
+        print(f"Kurve = curve_Fpn({a},{b},{p},{ir_poly},[{x},{y}],None)")
     return Kurve
