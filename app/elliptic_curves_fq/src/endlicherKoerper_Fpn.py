@@ -19,10 +19,10 @@ class Fpn:
 
     def __repr__(self):
         ' In einer Liste wird Fpn(Vertreter) ausgedrückt'
-        return f"Fpn({self.value})"
+        return f"{self.value}"
 
     def __str__(self):
-        return(f"Fpn({self.value})")
+        return(f"{self.value}")
     
     def make_Fpn(self,other):
         'Macht other zur Klasse Fpn'

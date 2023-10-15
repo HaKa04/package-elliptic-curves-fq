@@ -12,9 +12,13 @@ class curve:
         self.p = p
         self.ord = order
         self.startpoint = Points([Fp(Point[0],p),Fp(Point[1],p)],self)
+    def __str__(self):
+        return f'curve( a = {self.a}, b = {self.b}, p = {self.p}, Startpoint = {self.startpoint}, ord = {self.ord})'
+    
     def bound(self):
         ' Ordnung der Gruppe der Elliptischen Kurve nach Hasses Abschätzung gege unten und oben'
         return [int(self.p+1-2*math.sqrt(self.p)), math.ceil(self.p+1+2*math.sqrt(self.p))]
+    
     def compute(self,x,y):
         ' Gibt den Wert von links und rechts der Gleichung: y^2 = x^3 + ax + b an, mit Argumenten x und y'
         if isinstance(x,Fp):
@@ -40,7 +44,9 @@ class curve_Fpn(curve):
         self.ir_poly = ir_poly
         self.q = p ** (len(ir_poly)-1)
         self.startpoint = Points([Fpn(p,ir_poly,Point[0]),Fpn(p,ir_poly,Point[1])],self)
-        
+    def __str__(self):
+        return f'curve_Fpn( a = {self.a}, b = {self.b}, p = {self.p}, ir_poly = {self.ir_poly}, Startpoint = {self.startpoint}, ord = {self.ord})'
+    
     def bound(self):
         ' Ordnung der Gruppe der Elliptischen Kurve nach Hasses Abschätzung gege unten und oben'
         return [int(self.q+1-2*math.sqrt(self.q)), math.ceil(self.q+1+2*math.sqrt(self.q))]
@@ -80,16 +86,11 @@ class Points:
         self.Point=[self.x,self.y]
 
     def __str__(self):
-        ' Wenn Punkt geprinted wird, x und y werden ausgedruckt'
-        if isinstance(self.x,Fp):
-            return ("("+ str(self.x) + " y " + str(self.y)+")")
-        elif isinstance(self.x, Fpn):
-            return ("(" + str(self.x.value) + ", " + str(self.y.value) + ")")
-        elif self.x == "inf":
-            return (self.x)
+        ' Wenn Punkt geprinted wird (x,y) ausgedrückt'
+        return f"({self.x}, {self.y})"
     def __repr__(self):
-        ' Bei repr Command wird der Punkt dargestellt'
-        return f"Points({self.x}, {self.y})"
+        ' Bei print falls in Liste, werden (x,y) ausgedrückt'
+        return f"({self.x}, {self.y})"
         
     def __add__ (self, Point2):
         ' Addtion von zwei Punkten auf der Elliptischen Kurve'
@@ -149,27 +150,12 @@ class Points:
         i=-1
         while True:
             i+=1
-            if on_Curve(Listen[-1],self.Curve):
-                Listen.append(self + Listen[-1])
-            else:
-                print("not anymore on Curve")
-                break
+            Listen.append(self + Listen[-1])
             if Listen[-1].x == "inf" :
                 break
-        #print(Listen)
-        #print(len(Listen))
         return Listen
     def on_Curve(self):
         ' Überprüft ob ein Punkt wirklich auf der Kurve ist, indem es checkt ob y^2 == x^3 + ax + b. Gint Bool zurück'
         if self.x == "inf" and self.y == "inf" : return True
         else:
             return (self.x * self.x * self.x + self.Curve.a * self.x + self.Curve.b)  == (self.y * self.y )
-
-
-def on_Curve(Point,Curve):
-    ' Überprüft ob ein Punkt wirklich auf der Kurve ist, indem es checkt ob y^2 == x^3 + ax + b. Gint Bool zurück'
-    if Point.x == "inf" and Point.y == "inf" : return True
-    else:
-        if isinstance(Point.x, Fp):
-            return ( (Point.x * Point.x * Point.x + Fp(Curve.a, Curve.p) * Point.x + Fp(Curve.b,Curve.p))  == (Point.y * Point.y ))
-        else: return ( (Point.x * Point.x * Point.x + Curve.a * Point.x + Curve.b)  == (Point.y * Point.y ))

@@ -1,5 +1,5 @@
 from .src.ChinesischerRestsatz import * 
-from .src.elliptischeKurve import curve, curve_Fpn ,on_Curve, Points
+from .src.elliptischeKurve import curve, curve_Fpn , Points
 from .src.endlicheKoerper_Fp import Fp
 from .src.endlicherKoerper_Fpn import Fpn
 from .src.getrandomcurve import get_randomcurve

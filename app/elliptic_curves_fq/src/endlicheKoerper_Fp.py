@@ -11,11 +11,11 @@ class Fp:
     
     def __str__(self):
         ' bei print wird der Vertreter ausgegeben'
-        return str(self.value)
+        return f'{self.value}'
     
     def __repr__(self):
-        ' Print von Fp in einer Liste wird je Vetreter und p ausgedruckt'
-        return f"Fp({self.value}, {self.p})"
+        ' String von Fp bei repr Command'
+        return f"{self.value}"
     
     def __add__(self, other):
         ' Methode der Addition über dem Körper'
@@ -69,15 +69,9 @@ class Fp:
         else:
             return False
     
-    def __invert__(self):
-        ' Berechnet Inverses eines Vertreters in seiner Restklasse. '
-        if self.value == 0:
-            raise ZeroDivisionError("division by zero")
-        return Fp(pow(self.value, -1, self.p), self.p)
-    
 
-    def inverses(self):
-        'Berechnet Inverses eines Vertreters in seiner Restklasse. Diese mit eigener Implementation des erweiterten Euklidischen Algorithmus. Sie ist jedoch langsamer als der Algorithmus von Python. Deswegen werde ich für die Anwendung schon die vorhandene nehmen.'
+    def __invert__(self):
+        'Berechnet Inverses eines Vertreters in seiner Restklasse. Diese mit eigener Implementation des erweiterten Euklidischen Algorithmus.'
         if self.value == 0:
             raise ZeroDivisionError("division by zero")
         a = self.p
@@ -96,7 +90,7 @@ class Fp:
 
             e = temp - c[-1] * e
             c.pop(-1)
-        return e % self.p
+        return Fp(e, self.p)
     def __pow__(self,count):
         ' Wiederholte Multiplikation ( Potenz mit square and multiply. Laufzeit log(n))'
         result = Fp(1, self.p)

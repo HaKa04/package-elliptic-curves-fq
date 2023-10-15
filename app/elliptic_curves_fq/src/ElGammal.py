@@ -6,15 +6,15 @@ Kurve = ord353()
 startpunkt = Kurve.startpoint
 print(startpunkt)
 'key generation'
-privatekeya = random.randrange(Kurve.ord)
+privatekeya = random.randrange(Kurve.q)
 publickey_ga = startpunkt * privatekeya
 'decrybtion'
-message = random.randrange(100)
+message = random.randrange(Kurve.q)
 messagepoint = startpunkt * message
 print(messagepoint)
-r = random.randrange(Kurve.ord)
+r = random.randrange(Kurve.q)
 c0 = startpunkt * r
 c1 = publickey_ga * r + messagepoint
 'encribtion'
-m = c0 * (Kurve.ord - privatekeya) + c1
+m = c0 * c1 - c0 * privatekeya
 print(m)
