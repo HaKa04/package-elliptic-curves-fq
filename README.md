@@ -13,7 +13,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
    pip install elliptic-curves-fq
    ```
 
-2. **Importieren des Paketes :box::**
+2. **Importieren des Paketetes:**
    Hier wird gezeigt, wie man die Bibliothek verwenden kann. 
 
    ```python
@@ -58,9 +58,9 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
    - **Fpn:** Erlaubt das Rechnen mit endlichen Körpern $F_{p^n}$ und bietet Methoden wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Überschreiben der vorhandenen Operationen von Python.
 
      - **Parameter:**
-       - `p` (int): Eine Primzahl, die den endlichen Körper definiert.
-       - `irreducible_poly` (list): Ein irreduzibles Polynom über dem endlichen Körper $\mathbb{F}_p$.
-       - `element` (list): Ein Element im endlichen Körper.
+       - `p` (int): Eine Primzahl, die $\mathbb{F}_p$ definiert.
+       - `irreducible_poly` (list): Ein irreduzibles Polynom über diesem Körper. Definiert den Körper $\mathbb{F}_{p^n}$ 
+       - `element` (list): Ein Element $ \in \mathbb{F}_{p^n}$.
 
      ```python
      from elliptic_curves_fq import Fpn
@@ -80,7 +80,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
        - `a` (int): Der Koeffizient 'a' der elliptischen Kurve.
        - `b` (int): Der Koeffizient 'b' der elliptischen Kurve.
        - `p` (int): Eine Primzahl, die den endlichen Körper definiert.
-       - `start_point` (list): Ein Startpunkt auf der elliptischen Kurve.
+       - `start_point` (list[int,int]): Ein Startpunkt auf der elliptischen Kurve.
        - `ord` (int): Die Ordnung der Kurve. Wenn die Ordnung nicht bestummen wurde: None
      - Die Koeffizienten a und b werden direkt zu Objekten der Klasse Fp gemacht. 
 
@@ -102,7 +102,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
        - `b` (list): Der Koeffizient 'b' der elliptischen Kurve.
        - `p` (int): Eine Primzahl, die die Basis für den endlichen Körper $\mathbb{F}_p$ ist.
        - `irreducible_poly` (list): Ein irreduzibles Polynom über dem $\mathbb{F}_p$, welches den Körper $\mathbb{F}_{p^n}$ definiert.
-       - `start_point` (list): Ein Startpunkt auf der elliptischen Kurve.
+       - `start_point` (list[list,list]): Ein Startpunkt auf der elliptischen Kurve.
        - `ord` (int): Die Ordnung der Kurve.
      - Die Koeffizienten a und b werden direkt zu Objekten der Klasse Fpn gemacht.
      ```python
@@ -140,7 +140,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
      - **Parameter:**
        - `curve` (object): Die elliptische Kurve, mit der der Punkt verbunden ist.
        - `point` (list): Ein Punkt auf der elliptischen Kurve.
-
+     - Der Attribute x und y vom Punkt werden direkt in Objekte der Klassen Fp respektive Fpn umgewandelt.
      ```python
      from elliptic_curves_fq import Points, curve_Fpn
 
@@ -155,6 +155,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
      ```
 
    - **Gespeicherte Kurven :floppy_disk::**
+   Ich stelle Kurven zur Verfügung, damit nicht immer eine neue ertsellt werden muss. Alle Kurven bis auf die Kurve P_192 wurden von mir generiert. 
       - **P_192:** Sichere NIST-Kurve über Fp mit p ungefähr 2^192
       - **FBillionPowerTo20:** Eigene Kurve über $F(p^n) $mit p ungefähr 1 Billion und n = 20.
       - **P991:** Eigene Kurve über $F(991^3)$. Die Parameter sind zufällig.
