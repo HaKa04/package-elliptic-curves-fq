@@ -125,7 +125,7 @@ Um die Funktionalitaeten dieser Bibliothek zu nutzen, koennen Sie die folgenden 
        - `should_print` (bool): Ein Parameter, der bestimmt, ob die Kurve gedruckt werden soll.
 
      ```python
-     from elliptic_curves_fq import get_random_curve
+     from elliptic_curves_fq import get_randomcurve
      # Beispielcode fuer get_random_curve
      p = 17
      degree = 7
