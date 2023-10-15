@@ -1,13 +1,12 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.3.1'
+VERSION = '0.3.3'
 DESCRIPTION = 'ECC Library'
 
 with open("README.md", "r") as f:
     long_description = f.read()
-long_description.replace("ä", "ae")
-long_description.replace("ö", "oe")
-long_description.replace("ü", "ue")
+
+long_description = long_description.replace('ä', 'ae').replace('ö', 'oe').replace('ü', 'ue')
 
 
 # Setting up
@@ -31,5 +30,6 @@ setup(
         "Operating System :: Unix",
         "Operating System :: MacOS :: MacOS X",
         "Operating System :: Microsoft :: Windows",
-    ]
+    ],
+    url='https://github.com/HaKa04/package-elliptic-curves-fq'
 )
