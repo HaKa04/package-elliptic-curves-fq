@@ -125,7 +125,7 @@ Um die Funktionalitaeten dieser Bibliothek zu nutzen, koennen Sie die folgenden 
        - `should_print` (bool): Ein Parameter, der bestimmt, ob die Kurve gedruckt werden soll.
 
      ```python
-     from elliptic_curves_fq import get_random_curve
+     from elliptic_curves_fq import get_randomcurve
      # Beispielcode fuer get_random_curve
      p = 17
      degree = 7
@@ -149,7 +149,7 @@ Um die Funktionalitaeten dieser Bibliothek zu nutzen, koennen Sie die folgenden 
      point2 = Points([[3, 12, 16], [1, 4, 13]],curve) 
 
      print(point)  # Ausgabe: ([9, 10, 11], [7, 2, 4])
-     print(point2) # Ausgabe: ([3,12,16],[1,4,13])
+     print(point2) # Ausgabe: ([3, 12, 16],[1, 4, 13])
      print(point + point2 ) # Ausgabe ([12, 8, 1], [1, 0, 5])
      print(point * 3500) #Ausgabe ([8, 8, 2], [11, 11, 2])
      ```
