@@ -1,10 +1,14 @@
 from setuptools import setup, find_packages
 
-VERSION = '0.3.0'
+VERSION = '0.3.1'
 DESCRIPTION = 'ECC Library'
 
 with open("README.md", "r") as f:
     long_description = f.read()
+long_description.replace("ä", "ae")
+long_description.replace("ö", "oe")
+long_description.replace("ü", "ue")
+
 
 # Setting up
 setup(

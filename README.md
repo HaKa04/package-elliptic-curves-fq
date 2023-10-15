@@ -74,7 +74,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
      print(element ** 5) #Ausgabe [6, 7, 12]
      ```
 
-   - **curve:** Ermöglicht die Arbeit mit elliptischen Kurven über endlichen Körpern $F_{p}$. Eine elliptische Kurve hat die folgende Form \[y^2 = x^3 + ax + b\]
+   - **curve:** Ermöglicht die Arbeit mit elliptischen Kurven über endlichen Körpern $F_{p}$. Eine elliptische Kurve hat die folgende Form $$y^2 = x^3 + ax + b$$
 
      - **Parameter:**
        - `a` (int): Der Koeffizient 'a' der elliptischen Kurve.
@@ -101,7 +101,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
        - `a` (list): Der Koeffizient 'a' der elliptischen Kurve.
        - `b` (list): Der Koeffizient 'b' der elliptischen Kurve.
        - `p` (int): Eine Primzahl, die die Basis für den endlichen Körper $\mathbb{F}_p$ ist.
-       - `irreducible_poly` (list): Ein irreduzibles Polynom über dem $\mathbb{F}_p$, welches den Körper $\mathbb{F}_{p^n}$ definiert.
+       - `irreducible_poly` (list): Ein irreduzibles Polynom über $\mathbb{F}_p$ , welches den Körper $\mathbb{F}_{p^n}$ definiert.
        - `start_point` (list[list,list]): Ein Startpunkt auf der elliptischen Kurve.
        - `ord` (int): Die Ordnung der Kurve.
      - Die Koeffizienten a und b werden direkt zu Objekten der Klasse Fpn gemacht.
