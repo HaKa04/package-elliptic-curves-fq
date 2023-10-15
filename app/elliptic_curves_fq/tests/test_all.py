@@ -1,6 +1,6 @@
 from ..src.endlicheKoerper_Fp import Fp
 from ..src.endlicherKoerper_Fpn import Fpn
-from ..src.elliptischeKurve import (curve, Points, curve_Fpn, on_Curve)
+from ..src.elliptischeKurve import (curve, Points, curve_Fpn)
 
 import unittest
 
@@ -108,10 +108,10 @@ class TestCurveAndPoints(unittest.TestCase):
         ir_poly = [1, 0, 1]  # Beispiel irreduzibles Polynom
         test_curve = curve_Fpn(a, b, p, ir_poly, [[6,6],[0,4]], None)  # Erstelle curve_Fpn-Objekt
         point1 = Points([[6,6], [0,4]], test_curve)  # Punkt auf der Kurve
-        self.assertTrue(on_Curve(point1, test_curve))  # Erwartet True
+        self.assertTrue(point1.on_Curve())  # Erwartet True
         
         point2 = Points([[1,2],[5,2]], test_curve)  # Punkt nicht auf der Kurve
-        self.assertFalse(on_Curve(point2, test_curve))  # Erwartet False
+        self.assertFalse(point2.on_Curve())  # Erwartet False
     
     def test_point_addition(self):
         # Teste die Punktaddition in der Points-Klasse
@@ -122,7 +122,7 @@ class TestCurveAndPoints(unittest.TestCase):
         test_curve = curve_Fpn(a, b, p, ir_poly, [[6,6],[0,4]], None)  # Erstelle curve_Fpn-Objekt
         point1 = test_curve.startpoint
         result = point1 + point1
-        self.assertTrue(on_Curve(result, test_curve))
+        self.assertTrue(result.on_Curve())
 
 if __name__ == '__main__':
     unittest.main()
