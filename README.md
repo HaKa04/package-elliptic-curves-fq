@@ -1,4 +1,4 @@
-# Bibliothek für elliptische Kurven
+# Bibliothek zur Aretmetik elliptischer Kurven
 
 ## Beschreibung :pencil:
 Diese Bibliothek bietet Funktionalitäten für elliptische Kurven über endlichen Körpern $\mathbb{F}_{p^n}$. Sie ermöglicht unter anderem Berechnungen auf elliptischen Kurven.
