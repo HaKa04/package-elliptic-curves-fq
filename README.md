@@ -1,19 +1,19 @@
-# Bibliothek fuer elliptische Kurven 
+# Bibliothek für elliptische Kurven
 
-## Beschreibung
+## Beschreibung :pencil:
 Diese Bibliothek bietet Funktionalitäten für elliptische Kurven über endlichen Körpern $\mathbb{F}_{p^n}$. Sie ermöglicht unter anderem Berechnungen auf elliptischen Kurven.
 
-## Verwendung
+## Verwendung :computer:
 Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden Schritte ausführen:
 
-1. **Installation:**
+1. **Installation :inbox_tray::**
    Sie können die elliptische Kurven Bibliothek mit pip installieren:
 
    ```sh
    pip install elliptic-curves-fq
    ```
 
-2. **Verwendung:**
+2. **Importieren des Paketes :box::**
    Hier wird gezeigt, wie man die Bibliothek verwenden kann. 
 
    ```python
@@ -21,7 +21,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
    import elliptic_curves_fq
    ```
 
-3. **Klassen und ihre Verwendung:**
+3. **Klassen und ihre Verwendung :gear::**
 
    - **Fp:** Stellt ein endlichen Körper $F_p$ bereit und unterstützt arithmetische Operationen wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Überschreiben der vorhandenen Operationen von Python. 
 
@@ -114,10 +114,10 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
      b = [2, 7, 6]  
      start_point = [[9, 10, 11],[7, 2, 4]]  
      curve = curve_Fpn(a, b, p, irreducible_poly, start_point, None)
-     print(curve)  # Ausgabe: curve_Fpn( a = [1, 2, 3], b =[2, 3, 4], p = 19, ir_poly = [1, 1, 1, 2], Startpoint = ([9, 10, 11], [7, 2, 4]), ord = None)
+     print(curve)  # Ausgabe: curve_Fpn( a = [1, 12, 8], b =[2, 7, 6], p = 17, ir_poly = [1, 1, 1, 2], Startpoint = ([9, 10, 11], [7, 2, 4]), ord = None)
      ```
 
-   - **get_random_curve:** Ermöglicht das Erstellen einer neuen zufälligen Kurve. 
+   - **get_random_curve :game_die::** Ermöglicht das Erstellen einer neuen zufälligen Kurve. 
 
      - **Parameter:**
        - `p` (int): Eine Primzahl, die den endlichen Körper definiert.
@@ -135,7 +135,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
      start_point = curve.startpoint 
      ```
 
-   - **Points:** Ermöglicht die Aretmetik elliptischer Kurve und unterstützt Operationen wie Punktaddition, Punktvervielfachung und andere Funktionen im Kontext elliptischer Kurven. 
+   - **Points:** Ermöglicht die Arithmetik elliptischer Kurve und unterstützt Operationen wie Punktaddition, Punktvervielfachung und andere Funktionen im Kontext elliptischer Kurven. 
 
      - **Parameter:**
        - `curve` (object): Die elliptische Kurve, mit der der Punkt verbunden ist.
@@ -153,7 +153,8 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
      print(point + point2 ) # Ausgabe ([12, 8, 1], [1, 0, 5])
      print(point * 3500) #Ausgabe ([8, 8, 2], [11, 11, 2])
      ```
-   - **Gespeicherte Kurven:**
+
+   - **Gespeicherte Kurven :floppy_disk::**
       - **P_192:** Sichere NIST-Kurve über Fp mit p ungefähr 2^192
       - **FBillionPowerTo20:** Eigene Kurve über $F(p^n) $mit p ungefähr 1 Billion und n = 20.
       - **P991:** Eigene Kurve über $F(991^3)$. Die Parameter sind zufällig.
@@ -171,10 +172,11 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
      Kurve = ord353()
      startpunkt = Kurve.startpoint
      ```
-4. **Weitere Informationen:**
+
+4. **Weitere Informationen :page_facing_up::**
    - Die vollständige Dokumentation für die Bibliothek finden Sie in meinem [GitHub](https://github.com/HaKa04/package-elliptic-curves-fq) Account im Odrner docs. 
    
-## License
+## License :scroll:
 Dieses Projekt steht unter der MIT License - Sehen sie unter LICENSE für Details nach.
 
 Ich hoffe, dass Sie diese Bibliothek nützlich finden. Bitte zögern Sie nicht, bei Fragen oder Anregungen mich unter kaspar.hui@gmail.com zu kontaktieren.
