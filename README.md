@@ -23,7 +23,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
 
 3. **Klassen und ihre Verwendung :gear::**
 
-   - **Fp:** Stellt ein endlichen Körper$F_p$ bereit und unterstützt arithmetische Operationen wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Überschreiben der vorhandenen Operationen von Python. 
+   - **Fp:** Stellt ein endlichen Körper $F_p$ bereit und unterstützt arithmetische Operationen wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Überschreiben der vorhandenen Operationen von Python. 
 
      - **Parameter:**
        - `element` (int): Ein Element im endlichen Körper.
@@ -157,7 +157,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
    - **Gespeicherte Kurven :floppy_disk::**
    Ich stelle Kurven zur Verfügung, damit nicht immer eine neue ertsellt werden muss. Alle Kurven bis auf die Kurve P_192 wurden von mir generiert. 
       - **P_192:** Sichere NIST-Kurve über Fp mit p ungefähr 2^192
-      - **FBillionPowerTo20:** Eigene Kurve über $F(p^n) $mit p ungefähr 1 Billion und n = 20.
+      - **FBillionPowerTo20:** Eigene Kurve über $F(p^n)$ mit p ungefähr 1 Billion und n = 20.
       - **P991:** Eigene Kurve über $F(991^3)$. Die Parameter sind zufällig.
       - **P23:** Eigene Kurve über $F(23^3)$. Die Parameter sind zufällig.
       - **ord353:** Eigene Kurve über $F(7^3)$. Die Ordnung der elliptischen Kurve ist 353 und somit prim. Jeder Punkt ist ein Generator.
