@@ -23,7 +23,7 @@ Um die Funktionalitäten dieser Bibliothek zu nutzen, können Sie die folgenden 
 
 3. **Klassen und ihre Verwendung :gear::**
 
-   - **Fp:** Stellt ein endlichen Körper$F_p$ bereit und unterstützt arithmetische Operationen wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Überschreiben der vorhandenen Operationen von Python. 
+   - **Fp:** Stellt ein endlichen Körper $F_p$ bereit und unterstützt arithmetische Operationen wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Überschreiben der vorhandenen Operationen von Python. 
 
      - **Parameter:**
        - `element` (int): Ein Element im endlichen Körper.
