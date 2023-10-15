@@ -2,7 +2,7 @@ from .getrandomcurve import get_randomcurve
 from .elliptischeKurve import curve_Fpn, Points
 import time
 import math
-
+'Laufzeitanalyse im bezug zu p und n'
 def laufzeit_i(Kurve, i):
     startpunkt = Kurve.startpoint
     inf = Points("inf", Kurve)

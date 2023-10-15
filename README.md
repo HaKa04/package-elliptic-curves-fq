@@ -23,7 +23,7 @@ Um die Funktionalitaeten dieser Bibliothek zu nutzen, koennen Sie die folgenden 
 
 3. **Klassen und ihre Verwendung :gear::**
 
-   - **Fp:** Stellt ein endlichen Koerper $F_p$ bereit und unterstuetzt arithmetische Operationen wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch ueberschreiben der vorhandenen Operationen von Python. 
+   - **Fp:** Stellt ein endlichen Koerper $F_p$ bereit und unterstuetzt arithmetische Operationen wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Ueberschreiben der vorhandenen Operationen von Python. 
 
      - **Parameter:**
        - `element` (int): Ein Element im endlichen Koerper.
@@ -39,7 +39,7 @@ Um die Funktionalitaeten dieser Bibliothek zu nutzen, koennen Sie die folgenden 
      print(element - 10) # Ausgabe 20
      print(element ** 2) # Ausgabe 3
      ```
-   - **get_irreductible_polynomial:** Erlaubt die Generierung eines irreduziblen Polynoms ueber einem endlichen Koerper $F_{p}$.
+   - **get_irreductible_polynomial:** Generiert ein irreduziblen Polynoms ueber einem endlichen Koerper $F_{p}$.
 
      - **Parameter:**
        - `p` (int): Die Primzahl, die den endlichen Koerper definiert.
@@ -55,7 +55,7 @@ Um die Funktionalitaeten dieser Bibliothek zu nutzen, koennen Sie die folgenden 
      print(attempts)  # Ausgabe: 3 (Anzahl der Versuche, die benoetigt wurden, um das irreduzible Polynom zu generieren.)
      ```
 
-   - **Fpn:** Erlaubt das Rechnen mit endlichen Koerpern $F_{p^n}$ und bietet Methoden wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch ueberschreiben der vorhandenen Operationen von Python.
+   - **Fpn:** Ermoeglicht das Rechnen mit endlichen Koerpern $F_{p^n}$ und bietet Methoden wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Ueberschreiben der vorhandenen Operationen von Python.
 
      - **Parameter:**
        - `p` (int): Eine Primzahl, die $F_p$ definiert.
@@ -121,7 +121,7 @@ Um die Funktionalitaeten dieser Bibliothek zu nutzen, koennen Sie die folgenden 
 
      - **Parameter:**
        - `p` (int): Eine Primzahl, die den endlichen Koerper definiert.
-       - `degree` (int): Der Grad der Kurve.
+       - `degree` (int): Der Grad des irreduziblen Polynom fuer die Kurve.
        - `should_print` (bool): Ein Parameter, der bestimmt, ob die Kurve gedruckt werden soll.
 
      ```python

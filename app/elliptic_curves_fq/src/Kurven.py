@@ -1,4 +1,4 @@
-'''Liste von verschiedenen Kurven der Form (ek.curve(a,b,p/irpoly,[Point_x,Point_y],ordnung))
+'''Liste von verschiedenen Kurven der Form (curve_Fpn(a,b,p,irpoly,[Point_x,Point_y],ordnung))
 Jede Funktion hier hat kein Argument und man bekommt die zugehörige Kurve'''
 from .elliptischeKurve import curve, curve_Fpn
 import copy

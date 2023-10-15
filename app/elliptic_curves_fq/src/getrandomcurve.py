@@ -6,7 +6,9 @@ from .find_irreducible_polynomial import get_irreductible_polynomial
 
 
 def get_randomcurve(p, n=1, should_print = True):
-
+    '''generiert Zufällige Kurve über den Körper F(p^n). Im Fall n = 1 wird eine Kurve über F(p) erstellt. 
+    Im Fall, dass das zweite Argument kein int mit dem Grad sondern eine Liste ist, 
+    wird diese Liste als das irreduzible Polynom angenommen, und mithilfe diesem wird dann eine zfällige Kurve erstellt'''
     if isinstance(n,int):
         if n==1:
             x = random.randrange(p)

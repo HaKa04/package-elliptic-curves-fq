@@ -1,8 +1,9 @@
 from .Kurven import Ascii
 import random
-
+'Methoden der Ver- und Entschlüsselung für die Menezes-Vanstone Verschlüsselung'
 
 def Menezes_Vanstone_encrybtion(message, curve, publickey):
+    'Verschlüsselung'
     decrypted = []
     for i in message:
         if curve.ord != None:
@@ -17,6 +18,7 @@ def Menezes_Vanstone_encrybtion(message, curve, publickey):
 
 
 def Menezes_Vanstone_decrybtion(decrypted, curve, privatekey):
+    'Entschlüsselung'
     message = []
     for i in decrypted:
         Ri = i[0]

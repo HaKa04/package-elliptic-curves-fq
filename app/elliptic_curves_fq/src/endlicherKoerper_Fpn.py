@@ -1,12 +1,12 @@
-'implementation der Klasse F(p^n)'
+'implementation der Klasse Fpn für den Körper F(p^n)'
 import copy
 from .endlicheKoerper_Fp import Fp
 class Fpn:
     '''
-    Python implementation des Endlichen Körpers F(p^n) mit der Primzahl p, und einem ireduziblem Polynom Grad n
+    Python implementation des Endlichen Körpers F(p^n) mit der Primzahl p, und einem ireduziblem Polynom im Grad n.
     '''
     def __init__(self,p,ir_poly,value):
-        ' Konstruktor der Klasse mit irreduziblem Polynom über Fp als Liste, und Vertreter der Klasse, ebenfalls als Liste. Vetreter wird zuerst mit der Methode .formate gekürzt. Self.q = p^n und entspricht der Ordnung'
+        ' Konstruktor der Klasse mit irreduziblem Polynom über Fp als Liste, und Vertreter der Klasse, ebenfalls als Liste. Vetreter wird zuerst mit der Methode .formate in eine Liste der länge n gebracht/gekürzt. Self.q = p^n und entspricht der Ordnung'
         self.p = p
         self.ir_poly = ir_poly
         self.degree = len(ir_poly)-1
@@ -91,7 +91,7 @@ class Fpn:
         return [floor,value]
     
     def formate(self,value,ir_poly):
-        'Vertreter der Klasse F(p^n) werden auf degree < n gebracht. Länger der Liste = n-1. Verwending des Restes mit der Methode div'
+        'Vertreter der Klasse F(p^n) werden auf degree < n gebracht. Länger der Liste = n-1. Verwenden des Restes mit der Methode div'
         if len(value) < self.degree:
             return (  [0] * (self.degree - len(value)) + value )
         elif len(value) == self.degree:

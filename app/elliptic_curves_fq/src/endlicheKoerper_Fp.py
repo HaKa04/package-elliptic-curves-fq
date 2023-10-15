@@ -1,4 +1,4 @@
-'''Implementation Klasse Fp
+'''Implementation Klasse Fp für den Körper F(p)
 
 ''' 
 class Fp:
@@ -48,7 +48,7 @@ class Fp:
             raise TypeError(f"unsupported operand type(s) for *: '{type(self)}' and '{type(other)}'")
     
     def __truediv__(self, other):
-        ' Methode der Division über dem Körper Mithilfe der Multiplikation von dem Inversem des Nenners'
+        ' Methode der Division über dem Körper mit Hilfe der Multiplikation von dem Inversem des Nenners'
         if isinstance(other, Fp) and self.p == other.p:
             if other.value == 0:
                 raise ZeroDivisionError("division by zero")

@@ -1,4 +1,4 @@
-'''Implementation von Elliptischen Kurven und deren Aretmetic über endliche Körper'''
+'''Implementation von elliptischen Kurven und deren Aretmetic über endliche Körper'''
 from .endlicheKoerper_Fp import Fp
 from .endlicherKoerper_Fpn import Fpn
 import math
@@ -16,7 +16,7 @@ class curve:
         return f'curve( a = {self.a}, b = {self.b}, p = {self.p}, Startpoint = {self.startpoint}, ord = {self.ord})'
     
     def bound(self):
-        ' Ordnung der Gruppe der Elliptischen Kurve nach Hasses Abschätzung gege unten und oben'
+        ' Ordnung der Gruppe der elliptischen Kurve nach Hasses Abschätzung gege unten und oben'
         return [int(self.p+1-2*math.sqrt(self.p)), math.ceil(self.p+1+2*math.sqrt(self.p))]
     
     def compute(self,x,y):
@@ -48,7 +48,7 @@ class curve_Fpn(curve):
         return f'curve_Fpn( a = {self.a}, b = {self.b}, p = {self.p}, ir_poly = {self.ir_poly}, Startpoint = {self.startpoint}, ord = {self.ord})'
     
     def bound(self):
-        ' Ordnung der Gruppe der Elliptischen Kurve nach Hasses Abschätzung gege unten und oben'
+        ' Ordnung der Gruppe der elliptischen Kurve nach Hasses Abschätzung gege unten und oben'
         return [int(self.q+1-2*math.sqrt(self.q)), math.ceil(self.q+1+2*math.sqrt(self.q))]
     def compute(self,x,y):
         ' Gibt den Wert von links und rechts der Gleichung: y^2 = x^3 + ax + b an, mit Argumenten x und y'
@@ -64,7 +64,7 @@ class curve_Fpn(curve):
             return True
         else: return False  
 class Points:
-    ' Klasse eines Punktes auf einer Bestimmten Elliptische Kurve'
+    ' Klasse eines Punktes auf einer Bestimmten elliptische Kurve'
     def __init__ (self, Point, Curve):
         'Konstruktor der Klasse. x und y werden vom Punkt eingetragen'
         if Point == "inf" or Point == ["inf", "inf"]:
@@ -93,7 +93,7 @@ class Points:
         return f"({self.x}, {self.y})"
         
     def __add__ (self, Point2):
-        ' Addtion von zwei Punkten auf der Elliptischen Kurve'
+        ' Addtion von zwei Punkten auf der elliptischen Kurve'
         x2 = Point2.x
         y2 = Point2.y
         if self.x == "inf" and self.y == "inf":
@@ -124,6 +124,7 @@ class Points:
         'Subtraktion durch aufaddieren des inversen Punktes'
         return self + other.invminus()
     def invminus(self):
+        'Gibt den inversen Punkt -P wider'
         if self.x == "inf":
             return self
         else: 
@@ -140,7 +141,7 @@ class Points:
 
         return start    
     def __eq__(self,other):
-        'Gibt Bool zurück, ob zwei Elemente dieser Klasse Identisch sind. '
+        'Gibt Boolien zurück, ob zwei Elemente dieser Klasse Identisch sind. '
         return (self.x == other.x and self.y == other.y and self.Curve == other.Curve)
     
     def generate(self):
