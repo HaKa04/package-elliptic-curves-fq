@@ -17,7 +17,7 @@ def get_randomcurve(p, n=1, should_print = True):
             temp_b = 0
             Kurve = curve(a,temp_b,p,[x,y],None)
             leftandright = Kurve.compute(x,y)
-            b = (Fp(leftandright[0],p)-leftandright[1]).value
+            b = (Fp(leftandright[1],p)-leftandright[0]).value
             Kurve = curve(a,b,p,[x,y],None)
             if Kurve.discriminante_is_zero():
                 return get_randomcurve(p,n,should_print)
@@ -49,7 +49,7 @@ def get_randomcurve(p, n=1, should_print = True):
     temp_b = [0]
     Kurve = curve_Fpn(a,temp_b,p,ir_poly,[x,y],None)
     leftandright = Kurve.compute(x,y)
-    b = (Fpn(p, ir_poly, leftandright[0]) - Fpn(p, ir_poly,  leftandright[1])).value
+    b = ( Fpn(p, ir_poly,  leftandright[1]) - Fpn(p, ir_poly, leftandright[0])).value
     Kurve =(curve_Fpn(a,b,p,ir_poly,[x,y],None))
     if Kurve.discriminante_is_zero():
         return get_randomcurve(p,n,should_print)
