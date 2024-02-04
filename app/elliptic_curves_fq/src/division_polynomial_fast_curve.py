@@ -1,4 +1,4 @@
-import .fast_curve
+from .fast_curve import fast_F47_hoch_48
 import numpy as np
 from itertools import zip_longest
 
@@ -6,7 +6,7 @@ class Polynomial:
     ' Klasse eines Polynom mit Koeffizienten in F(p^n)'
     def __init__(self,value):
         if isinstance(value[0],np.ndarray):
-            self.value = [fast_curve.fast_F47_hoch_48(value[i]) for i in range(len(value))]
+            self.value = [fast_F47_hoch_48(value[i]) for i in range(len(value))]
         else: self.value = value
         self.p = 47
     def __str__(self):
@@ -39,9 +39,9 @@ class Polynomial:
     
     def __sub__(self,other):
         if len(self.value) < len(other.value):
-            self.value = [fast_curve.fast_F47_hoch_48(np.zeros(48,dtype=int)) for _ in range(len(other.value) - len(self.value))] + self.value
+            self.value = [fast_F47_hoch_48(np.zeros(48,dtype=int)) for _ in range(len(other.value) - len(self.value))] + self.value
         elif len(self.value) > len(other.value):
-            other.value = [fast_curve.fast_F47_hoch_48(np.zeros(48,dtype=int)) for _ in range(len(self.value) - len(other.value))] + other.value
+            other.value = [fast_F47_hoch_48(np.zeros(48,dtype=int)) for _ in range(len(self.value) - len(other.value))] + other.value
         result = [self.value[i] - other.value[i] for i in range(len(self.value))]
         return Polynomial(result)
 
@@ -140,12 +140,12 @@ def karatsuba_mul(a, b):
     b1, b0 = b[:n_2], b[n_2:]
     a1b1 = karatsuba_mul(a1, b1)
     a0b0 = karatsuba_mul(a0, b0)
-    a1_plus_a0 = [ai + aj for ai, aj in zip_longest(a1, a0, fillvalue=fast_curve.fast_F47_hoch_48(np.zeros(48,dtype=int)))]
-    b1_plus_b0 = [bi + bj for bi, bj in zip_longest(b1, b0, fillvalue=fast_curve.fast_F47_hoch_48(np.zeros(48,dtype=int)))]
+    a1_plus_a0 = [ai + aj for ai, aj in zip_longest(a1, a0, fillvalue=fast_F47_hoch_48(np.zeros(48,dtype=int)))]
+    b1_plus_b0 = [bi + bj for bi, bj in zip_longest(b1, b0, fillvalue=fast_F47_hoch_48(np.zeros(48,dtype=int)))]
     a1b1_plus_a0b0 = karatsuba_mul(a1_plus_a0, b1_plus_b0)
-    piece = [ai + aj for ai, aj in zip_longest(a1b1, a0b0, fillvalue=fast_curve.fast_F47_hoch_48(np.zeros(48,dtype=int)))]
-    middle_term = [ai - aj for ai, aj in zip_longest(a1b1_plus_a0b0, piece, fillvalue=fast_curve.fast_F47_hoch_48(np.zeros(48,dtype=int)))]
-    result = [fast_curve.fast_F47_hoch_48(np.zeros(48,dtype=int)) for _ in range(len(a) + len(b) - 1)]
+    piece = [ai + aj for ai, aj in zip_longest(a1b1, a0b0, fillvalue=fast_F47_hoch_48(np.zeros(48,dtype=int)))]
+    middle_term = [ai - aj for ai, aj in zip_longest(a1b1_plus_a0b0, piece, fillvalue=fast_F47_hoch_48(np.zeros(48,dtype=int)))]
+    result = [fast_F47_hoch_48(np.zeros(48,dtype=int)) for _ in range(len(a) + len(b) - 1)]
     for i, val in enumerate(a1b1):
         result[i] += val
     for i, val in enumerate(middle_term):
