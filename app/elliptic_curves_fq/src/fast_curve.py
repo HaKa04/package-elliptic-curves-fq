@@ -157,13 +157,6 @@ class fast_Curve_Point:
     def __repr__(self):
         ' Bei print falls in Liste, werden (x,y) ausgedrückt'
         return f"({self.x}, {self.y})"
-    def add_self(self):
-        d_x = (self.x * self.x * 3 + self.a)
-        d_y = (self.y * 2)
-        s = d_x / d_y                
-        x3 = s * s  - (self.x * 2)
-        y3 = (s * (self.x - x3)) - self.y
-        return fast_Curve_Point([x3,y3])
     
     def __add__ (self, Point2):
         ' Addtion von zwei Punkten auf der Elliptischen Kurve'
