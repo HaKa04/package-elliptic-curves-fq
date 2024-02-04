@@ -67,7 +67,7 @@ class fast_F47_hoch_48:
     
     def __invert__(self):
         'gibt inverses Element eines Vertreters im Körper F(p^n) / ireduziblem Polynom an. Wird mit Hilfe des erweiterten Euklidischen Algorithmus für Polynome über Fp berechnet'
-        a = copy.copy(self.ir_poly)
+        a = np.array([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13], dtype=int)
         b = copy.copy(self.value)
         c = []
         while sum(b) != 0:
