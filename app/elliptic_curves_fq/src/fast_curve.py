@@ -8,10 +8,7 @@ class fast_F47_hoch_48:
     def __init__(self,value):
         ' Konstruktor der Klasse mit irreduziblem Polynom über Fp als Liste, und Vertreter der Klasse, ebenfalls als Liste. Vetreter wird zuerst mit der Methode .formate gekürzt. Self.q = p^n und entspricht der Ordnung'
         self.p = 47
-        self.ir_poly = np.array([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13])
-        self.degree = 48
         self.value = value
-        self.q = self.p ** self.degree
         
     def __repr__(self):
         ' String von Fpn bei repr Command'
@@ -19,6 +16,15 @@ class fast_F47_hoch_48:
 
     def __str__(self):
         return(f"{self.value}")
+    
+    def ir_poly(self):
+        return np.array([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13], dtype=int)
+    
+    def q(self):
+        return 182262440382829085265332464749253545480222210363177678129189304510665330097954561
+    
+    def degree(self):
+        return 48
     
     def __add__(self,other):
         ' Addition über dem Körper F(p^n)'
@@ -148,8 +154,10 @@ class fast_Curve_Point:
 
         self.a = fast_F47_hoch_48(np.array([38, 16, 45, 26, 10, 16, 42, 26, 37, 9, 18, 30, 8, 0, 42, 29, 9, 31, 0, 45, 18, 31, 45, 27, 6, 35, 40, 17, 24, 44, 32, 43, 2, 45, 7, 17, 37, 11, 42, 45, 15, 0, 11, 27, 43, 32, 8, 36]))
         self.b = fast_F47_hoch_48(np.array([30, 31, 29, 36, 34, 8, 7, 39, 40, 46, 6, 18, 2, 27, 10, 21, 30, 14, 21, 9, 13, 46, 32, 20, 23, 9, 19, 7, 36, 2, 39, 16, 39, 14, 19, 10, 40, 44, 33, 23, 44, 27, 4, 28, 18, 44, 32, 41]))
-        self.q = self.a.q
         self.Point=[self.x,self.y]
+
+    def q(self):
+        return 182262440382829085265332464749253545480222210363177678129189304510665330097954561
 
     def __str__(self):
         ' Wenn Punkt geprinted wird (x,y) ausgedrückt'
