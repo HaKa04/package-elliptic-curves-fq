@@ -1,4 +1,4 @@
-import fast_curve
+import .fast_curve
 import numpy as np
 from itertools import zip_longest
 
