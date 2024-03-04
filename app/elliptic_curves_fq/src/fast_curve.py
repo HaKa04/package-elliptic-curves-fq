@@ -1,7 +1,9 @@
 import numpy as np
 import copy
 
-class fast_F47_hoch_48:
+inverse_list = np.array([0, 1, 24, 16, 12, 19, 8, 27, 6, 21, 33, 30, 4, 29, 37, 22, 3, 36, 34, 5, 40, 9, 15, 45, 2, 32, 38, 7, 42, 13, 11, 44, 25, 10, 18, 43, 17, 14, 26, 41, 20, 39, 28, 35, 31, 23, 46],dtype=int)
+
+class fast_F47_hoch_46:
     '''
     Python implementation des Endlichen Körpers F(p^n) mit der Primzahl p, und einem ireduziblem Polynom Grad n
     '''
@@ -18,63 +20,59 @@ class fast_F47_hoch_48:
         return(f"{self.value}")
     
     def ir_poly(self):
-        return np.array([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13], dtype=int)
+        return np.array([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2], dtype=int)
     
     def q(self):
-        return 182262440382829085265332464749253545480222210363177678129189304510665330097954561
+        return self.p**46
     
     def degree(self):
-        return 48
+        return 46
     
     def __add__(self,other):
         ' Addition über dem Körper F(p^n)'
         result = (self.value + other.value) % self.p
-        return fast_F47_hoch_48(result)
+        return fast_F47_hoch_46(result)
     
     def __sub__(self,other):
         ' Subtraktion über dem Körper F(p^n)'
         result = (self.value - other.value) % self.p
-        return fast_F47_hoch_48(result)
+        return fast_F47_hoch_46(result)
     
     def invminus(self):
         ' gibt den Wert des Polynoms [0] - Vertreter zurück'
         result = (-self.value) % self.p
-        return fast_F47_hoch_48(result)
+        return fast_F47_hoch_46(result)
     
     def __mul__(self, other):
         ' Multiplikation über dem Körper F(p^n) ohne Kürzung mod irreduziblem Poynom'
         if isinstance(other, int):
-            return fast_F47_hoch_48((self.value * other) % self.p)
+            return fast_F47_hoch_46((self.value * other) % self.p)
         ' Multiplikation über dem Körper F(p^n) ohne Kürzung mod irreduziblem Poynom'
         conv = np.convolve(self.value, other.value) % self.p
         'Kürzung des Polynoms mod irreduziblem Polynom'
-        temp = conv[:24]
-        temp2 = conv[24:48] - temp
-        temp3 = (conv[48:72] - temp * 13)
-        temp4  = conv[72:]
-        temp5 = np.concatenate(([0],temp2[:23], [0]*24))
-        temp5_shifted = np.roll(temp5, 24)
-        result = (np.concatenate((temp2[23:],temp3,temp4)) - temp5 - temp5_shifted * 13) % self.p
-        return(fast_F47_hoch_48(result))
+        final = (conv[46:] - conv[:45] * 2) % 47
+        final= np.append(conv[45],final)
+        return(fast_F47_hoch_46(final))
     
     def mul2(self, value, other):
-        value = value.value
         'Multiplikation über dem Körper F(p^n), spezifisch für Inverse'
-        value = value[(len(other)-1):]
+        value = value.value[(len(other)-1):]
         conv = np.convolve(value, other) % self.p
-        return fast_F47_hoch_48(conv)
+        return fast_F47_hoch_46(conv)
 
     
     def __invert__(self):
         'gibt inverses Element eines Vertreters im Körper F(p^n) / ireduziblem Polynom an. Wird mit Hilfe des erweiterten Euklidischen Algorithmus für Polynome über Fp berechnet'
-        a = np.array([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 13], dtype=int)
         b = copy.copy(self.value)
+        if sum(b) == b[-1]:
+            b[-1] = inverse_list[b[-1]]
+            return fast_F47_hoch_46(b)
+        a = np.array([1, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 2], dtype=int)
+        
         c = []
         while sum(b) != 0:
             division = self.div(a,b)
-            c += [division[0]]
-            #division[1] = np.trim_zeros(division[1], 'f')
-                
+            c += [division[0]]                
             a = b
             b = division[1]
         a = np.trim_zeros(a, 'f')
@@ -82,16 +80,16 @@ class fast_F47_hoch_48:
             print(a)
             print("nicht irreduzibel")
             return
-        inv_a = pow(a[0].item(),self.p-2,self.p)
-        d = fast_F47_hoch_48(np.concatenate([np.zeros(47, dtype=int), [1]]))
-        e = fast_F47_hoch_48(np.zeros(48, dtype=int))
+        inv_a = inverse_list[a[0]]
+        d = fast_F47_hoch_46(np.concatenate([np.zeros(45, dtype=int), [1]]))
+        e = fast_F47_hoch_46(np.zeros(46, dtype=int))
         while c != []:
             temp = d
             d = e
             e = temp - self.mul2(e, c[-1])
             c.pop(-1)
         e.value = (e.value * inv_a ) % self.p 
-        return fast_F47_hoch_48(e.value)
+        return fast_F47_hoch_46(e.value)
 
     def div(self,value, other):
         if np.sum(other) == 0:
@@ -101,7 +99,7 @@ class fast_F47_hoch_48:
         value = np.trim_zeros(value, 'f')
         degree = len(other) - 1
         if len(value) < len(other):
-            return [np.array([0]), value]
+            return [np.array([0],dtype=int), value]
         floor = []
         while len(value) >= degree + 1:
             if value[0] == 0:
@@ -109,11 +107,12 @@ class fast_F47_hoch_48:
                 floor.append(0)   
             else:
                 first_of_mod = value[0]
-                facter = ((self.p - first_of_mod) * pow(other[0].item(),self.p-2,self.p)) % self.p
+                other_inv = inverse_list[other[0]]
+                facter = ((self.p - first_of_mod) * other_inv) % self.p
                 value[:degree+1] = (value[:degree+1] + facter * other[:degree+1]) % self.p
                 value = value[1:]
                 floor.append(self.p-facter)
-        return [np.array(floor),value]
+        return [np.array(floor,dtype=int),value]
         
     def __truediv__(self, other):
         ' Division über dem Körper F(p^n). Wird mit der Multiplikation des Inversen des Nenners berechnet'
@@ -125,9 +124,9 @@ class fast_F47_hoch_48:
 
     def __pow__(self,count):
         ' Wiederholte Multiplikation ( Potenz mit square and multiply. Laufzeit log(n))'
-        one = np.zeros(48, dtype=int)
+        one = np.zeros(46, dtype=int)
         one[-1] = 1
-        result = fast_F47_hoch_48(one)
+        result = fast_F47_hoch_46(one)
         counting = self
         while count > 0:
             if count % 2 == 1: result *= counting
@@ -152,12 +151,12 @@ class fast_Curve_Point:
                 self.x = "inf"
                 self.y = "inf"  
 
-        self.a = fast_F47_hoch_48(np.array([38, 16, 45, 26, 10, 16, 42, 26, 37, 9, 18, 30, 8, 0, 42, 29, 9, 31, 0, 45, 18, 31, 45, 27, 6, 35, 40, 17, 24, 44, 32, 43, 2, 45, 7, 17, 37, 11, 42, 45, 15, 0, 11, 27, 43, 32, 8, 36]))
-        self.b = fast_F47_hoch_48(np.array([30, 31, 29, 36, 34, 8, 7, 39, 40, 46, 6, 18, 2, 27, 10, 21, 30, 14, 21, 9, 13, 46, 32, 20, 23, 9, 19, 7, 36, 2, 39, 16, 39, 14, 19, 10, 40, 44, 33, 23, 44, 27, 4, 28, 18, 44, 32, 41]))
+        self.a = fast_F47_hoch_46(np.array([3, 17, 22, 25, 41, 7, 10, 15, 15, 10, 37, 36, 29, 38, 37, 12, 26, 2, 20, 7, 22, 6, 39, 7, 16, 10, 46, 23, 19, 0, 18, 36, 7, 27, 4, 29, 34, 45, 27, 25, 12, 38, 37, 38, 38, 45],dtype=int))
+        self.b = fast_F47_hoch_46(np.array([10, 29, 40, 5, 22, 46, 26, 38, 40, 41, 26, 46, 32, 41, 29, 28, 29, 0, 27, 13, 20, 38, 36, 33, 38, 10, 20, 4, 41, 34, 24, 7, 40, 6, 17, 24, 31, 10, 39, 46, 26, 38, 27, 27, 17, 45],dtype=int))
         self.Point=[self.x,self.y]
 
     def q(self):
-        return 182262440382829085265332464749253545480222210363177678129189304510665330097954561
+        return 47 ** 46
 
     def __str__(self):
         ' Wenn Punkt geprinted wird (x,y) ausgedrückt'
@@ -178,7 +177,9 @@ class fast_Curve_Point:
             if x2 == self.x and y2 == self.y:
                 if sum(self.y.value) == 0:
                     return fast_Curve_Point("inf")                
-                s = (self.x * self.x * 3 + self.a) / (self.y * 2)
+                d_x = (self.x * self.x * 3 + self.a)
+                d_y = (self.y * 2)
+                s = d_x / d_y
                 x3 = s * s  - (self.x * 2)
                 y3 = (s * (self.x - x3)) - self.y
                 return fast_Curve_Point([x3,y3])    
@@ -186,7 +187,9 @@ class fast_Curve_Point:
                 if self.x == x2:
                     return fast_Curve_Point("inf")
                 else: 
-                    s = (self.y-y2) / (self.x-x2)
+                    d_y = (self.y-y2)
+                    d_x = (self.x-x2)
+                    s = d_y / d_x
                     x3 = s * s - self.x - x2
                     y3 = (s* ( self.x - x3)) -self.y
                     return fast_Curve_Point([x3,y3])
@@ -194,7 +197,7 @@ class fast_Curve_Point:
         'Subtraktion durch aufaddieren des inversen Punktes'
         return self + other.invminus()
     def invminus(self):
-        if self.x == "inf":
+        if isinstance(self.x,str):
             return self
         else: 
             return fast_Curve_Point([self.x, self.y.invminus()])
@@ -202,16 +205,20 @@ class fast_Curve_Point:
         ' Punkt Multiplikation sprich aufaddierung des selben Punktes n-mal. Mit square and multiply laufzeit von (log(n))'
         start = fast_Curve_Point("inf")
         counting = self
+        if Faktor < 0:
+            Faktor = -Faktor
+            counting = counting.invminus()
         while Faktor > 0:
             if Faktor % 2 == 1: start += counting
             counting += counting
             Faktor = Faktor // 2
 
         return start    
-
-
+    
     def __eq__(self,other):
         'Gibt Bool zurück, ob zwei Elemente dieser Klasse Identisch sind. '
+        if isinstance(other, str):
+            return isinstance(self.x, str)
         if type(other.x) == type(self.x):
             return (self.x == other.x and self.y == other.y)
         else:
@@ -221,10 +228,10 @@ class fast_Curve_Point:
         ' Überprüft ob ein Punkt wirklich auf der Kurve ist, indem es checkt ob y^2 == x^3 + ax + b. Gint Bool zurück'
         if self.x == "inf" and self.y == "inf" : return True
         else:
-            return (self.x * self.x * self.x + self.Curve.a * self.x + self.Curve.b)  == (self.y * self.y )
+            return (self.x * self.x * self.x + self.a * self.x + self.b)  == (self.y * self.y )
 
 def start_point():
     ' Gibt den Startpunkt der Kurve zurück'
-    x =  [29, 4, 24, 4, 45, 41, 34, 18, 5, 37, 21, 32, 38, 4, 45, 36, 8, 4, 0, 43, 44, 31, 5, 21, 38, 43, 28, 35, 40, 12, 19, 27, 24, 1, 30, 26, 15, 35, 45, 30, 14, 12, 21, 30, 45, 18, 13, 11]
-    y =  [15, 2, 46, 42, 27, 17, 40, 22, 30, 18, 45, 24, 21, 25, 21, 11, 29, 36, 11, 25, 42, 15, 25, 17, 30, 35, 1, 2, 15, 7, 35, 20, 44, 27, 4, 11, 2, 46, 7, 17, 18, 7, 2, 5, 29, 11, 36, 39]
-    return fast_Curve_Point([fast_F47_hoch_48(np.array(x)),fast_F47_hoch_48(np.array(y))])
+    x = [7, 4, 7, 17, 9, 5, 23, 32, 13, 0, 22, 25, 43, 34, 43, 11, 44, 38, 8, 36, 37, 9, 24, 31, 20, 37, 33, 45, 45, 22, 8, 20, 45, 3, 30, 21, 46, 19, 8, 14, 31, 3, 33, 9, 46, 15]
+    y = [41, 13, 25, 8, 19, 1, 13, 45, 42, 34, 43, 23, 7, 35, 23, 37, 15, 5, 22, 4, 42, 43, 17, 28, 10, 28, 41, 17, 36, 39, 10, 40, 25, 6, 39, 40, 24, 35, 28, 38, 16, 45, 37, 30, 19, 14]
+    return fast_Curve_Point([fast_F47_hoch_46(np.array(x,dtype=int)),fast_F47_hoch_46(np.array(y,dtype=int))])  
