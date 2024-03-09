@@ -3,6 +3,7 @@ import copy
 import numpy as np
 from itertools import zip_longest
 import concurrent.futures
+import time
 
 inverse_list = np.array([0, 1, 24, 16, 12, 19, 8, 27, 6, 21, 33, 30, 4, 29, 37, 22, 3, 36, 34, 5, 40, 9, 15, 45, 2, 32, 38, 7, 42, 13, 11, 44, 25, 10, 18, 43, 17, 14, 26, 41, 20, 39, 28, 35, 31, 23, 46],dtype=int)
 
