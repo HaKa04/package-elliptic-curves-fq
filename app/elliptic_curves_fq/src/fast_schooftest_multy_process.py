@@ -3,7 +3,7 @@ import copy
 import numpy as np
 from itertools import zip_longest
 import concurrent.futures
-import time
+
 inverse_list = np.array([0, 1, 24, 16, 12, 19, 8, 27, 6, 21, 33, 30, 4, 29, 37, 22, 3, 36, 34, 5, 40, 9, 15, 45, 2, 32, 38, 7, 42, 13, 11, 44, 25, 10, 18, 43, 17, 14, 26, 41, 20, 39, 28, 35, 31, 23, 46],dtype=int)
 
 class fast_F47_hoch_46:
@@ -155,7 +155,6 @@ class fast_Curve_Point:
 
         self.a = a
         self.b = b
-        self.Point=[self.x,self.y]
 
     def q(self):
         return 47 ** 46
@@ -173,29 +172,29 @@ class fast_Curve_Point:
         x2 = Point2.x
         y2 = Point2.y
         if isinstance(self.x,str):
-            return fast_Curve_Point([x2,y2],self.a,self.b)
+            return fast_Curve_Point([x2,y2], self.a, self.b)
         elif isinstance(x2,str):
-            return fast_Curve_Point([self.x,self.y],self.a,self.b)
+            return fast_Curve_Point([self.x,self.y], self.a, self.b)
         else:
             if x2 == self.x and y2 == self.y:
                 if sum(self.y.value) == 0:
-                    return fast_Curve_Point("inf",self.a,self.b)                
+                    return fast_Curve_Point("inf", self.a, self.b)                
                 d_x = (self.x * self.x * 3 + self.a)
                 d_y = (self.y * 2)
                 s = d_x / d_y
                 x3 = s * s  - (self.x * 2)
                 y3 = (s * (self.x - x3)) - self.y
-                return fast_Curve_Point([x3,y3],self.a,self.b)    
+                return fast_Curve_Point([x3,y3], self.a, self.b)    
             else:
                 if self.x == x2:
-                    return fast_Curve_Point("inf",self.a,self.b)
+                    return fast_Curve_Point("inf", self.a, self.b)
                 else: 
                     d_y = (self.y-y2)
                     d_x = (self.x-x2)
                     s = d_y / d_x
                     x3 = s * s - self.x - x2
                     y3 = (s* ( self.x - x3)) -self.y
-                    return fast_Curve_Point([x3,y3],self.a,self.b)
+                    return fast_Curve_Point([x3,y3], self.a, self.b)
     def __sub__(self,other):
         'Subtraktion durch aufaddieren des inversen Punktes'
         return self + other.invminus()
@@ -203,10 +202,10 @@ class fast_Curve_Point:
         if self.x == "inf":
             return self
         else: 
-            return fast_Curve_Point([self.x, self.y.invminus()],self.a,self.b)
+            return fast_Curve_Point([self.x, self.y.invminus()], self.a, self.b)
     def __mul__ (self, Faktor):
         ' Punkt Multiplikation sprich aufaddierung des selben Punktes n-mal. Mit square and multiply laufzeit von (log(n))'
-        start = fast_Curve_Point("inf",self.a,self.b)
+        start = fast_Curve_Point("inf", self.a, self.b)
         counting = self
         if Faktor < 0:
             Faktor = -Faktor
@@ -233,9 +232,9 @@ class fast_Curve_Point:
         else:
             return (self.x * self.x * self.x + self.a * self.x + self.b)  == (self.y * self.y )
 
-def start_point(a,b,x,y):
+def start_point(a ,b, x, y):
     ' Gibt den Startpunkt der Kurve zurück'
-    return fast_Curve_Point([x,y],a,b)
+    return fast_Curve_Point([x,y], a, b)
 
 # Python-Programm für den chinesischen Restsatz Algorithmus
 def extended_gcd(a, b):
@@ -645,17 +644,17 @@ def remainderT2(a, b):
 def calculate_x_part(Pi_l_x, q, Phi_l,l):
     # Your calculation for x part
     Pi_l_x = Pi_l_x.__pow__(q, Phi_l,l,f'calculate Pi_l_x')
-    print(f'\033[32mcalcated Pi_{l}_x')
+    print(f'\033[32mcalculated Pi_{l}_x')
     Pi_l_squared_x = Pi_l_x.__pow__(q, Phi_l,l,f'calculate Pi_l_squared_x')
-    print(f'\033[32mcalcated Pi_{l}_squared_x')
+    print(f'\033[32mcalculated Pi_{l}_squared_x')
     return Pi_l_x, Pi_l_squared_x
 
 def calculate_y_part(Pi_l_y, q, Phi_l,l):
     # Your calculation for y part
     Pi_l_y = Pi_l_y.__pow__(q//2, Phi_l,l,f'calculate Pi_l_y')
-    print(f'\033[32mcalcated Pi_{l}_y')
+    print(f'\033[32mcalculated Pi_{l}_y')
     Pi_l_squared_y = Pi_l_y.__pow__(q+1, Phi_l,l,f'calculate Pi_l_squared_y')
-    print(f'\033[32mcalcated Pi_{l}_squared_y')
+    print(f'\033[32mcalculated Pi_{l}_squared_y')
     return Pi_l_y, Pi_l_squared_y
 
 def remainderTl(a, b, l, Phi_l):
@@ -684,10 +683,10 @@ def remainderTl(a, b, l, Phi_l):
     '''
     Pi_l_x = Pi_l_x.__pow__(q, Phi_l)
     Pi_l_y = Pi_l_y.__pow__(q//2, Phi_l)
-    print(f'calcated Pi_{l}')
+    print(f'calculated Pi_{l}')
     Pi_l_squared_x = Pi_l_x.__pow__(q, Phi_l)
     Pi_l_squared_y = Pi_l_y.__pow__(q+1, Phi_l)
-    print(f'calcated Pi_{l}_squared')'''
+    print(f'calculated Pi_{l}_squared')'''
 
     Pi_l = TortionGroup(a,b,Phi_l,[Pi_l_x,Pi_l_y])
     Pi_l_squared = TortionGroup(a,b,Phi_l,[Pi_l_squared_x,Pi_l_squared_y])
@@ -729,7 +728,7 @@ def remainderTl(a, b, l, Phi_l):
         return remainderTl(a, b, l, facter)
     print('\033[31mhaven\'t found t')
 
-def main_schoof(a, b, x , y):
+def main_schoof(a, b, x, y,pools = 8):
     global total_total_start
     start_div_poly = Division_Polynomial(a, b)
     div_poly = start_div_poly.get_division_polynomial(55)
@@ -751,22 +750,19 @@ def main_schoof(a, b, x , y):
     t2 = remainderT2(a, b)
     print(f'\033[31mfound t = {t2} for 2')
 
-    with concurrent.futures.ProcessPoolExecutor(max_workers=4) as executor:
+    with concurrent.futures.ProcessPoolExecutor(max_workers=pools//2) as executor:
         Tlwithout2 = list(executor.map(remainderTl, [a] * len(List_primes), [b] * len(List_primes), List_primes, [Phi[prime] for prime in List_primes]))
     
     Tl = [t2] + list(reversed(Tlwithout2))
-    t = solve_for_a([2] + List_primes,Tl)
+    List_primes.reverse()
     StartPoint = start_point(a,b,x,y)
-    StartPoint.x = x
-    StartPoint.y = y
-
+    t = solve_for_a([2] + List_primes,Tl)
     bound = 2 * 47**23
     checkrange = bound // primecount + 1
     under = t + checkrange * primecount
-
     UnderPoint = StartPoint * (q + 1 - under)
     StepPoint = StartPoint * primecount
-    for i in range(1, 2 * checkrange + 2):
+    for i in range(1, (2 * checkrange)+ 2):
         UnderPoint += StepPoint
         if UnderPoint == 'inf':
             t = under - i * primecount
@@ -778,12 +774,13 @@ def main_schoof(a, b, x , y):
         
 if __name__ == '__main__':
     x = fast_F47_hoch_46(np.array([7, 4, 7, 17, 9, 5, 23, 32, 13, 0, 22, 25, 43, 34, 43, 11, 44, 38, 8, 36, 37, 9, 24, 31, 20, 37, 33, 45, 45, 22, 8, 20, 45, 3, 30, 21, 46, 19, 8, 14, 31, 3, 33, 9, 46, 15],dtype=int))
-    y = fast_F47_hoch_46(np.array([41, 13, 25, 8, 19, 1, 13, 45, 42, 34, 43, 23, 7, 35, 23, 37, 15, 5, 22, 4, 42, 43, 17, 28, 10, 28, 41, 17, 36, 39, 10, 40, 25, 6, 39, 40, 24, 35, 28, 38, 16, 45, 37, 30, 19, 14],dtype=int))
+    y = fast_F47_hoch_46(np.array([41, 13, 25, 8, 19, 1, 13, 45, 42, 34, 43, 23, 7, 35, 23, 37, 15, 5, 22, 4, 42, 43, 17, 28, 10, 28, 41, 17, 36, 39, 10, 40, 25, 6, 39, 40, 24, 35, 28, 38, 16, 45, 37, 30, 19, 14],dtype=int))    
     a = fast_F47_hoch_46(np.array([3, 17, 22, 25, 41, 7, 10, 15, 15, 10, 37, 36, 29, 38, 37, 12, 26, 2, 20, 7, 22, 6, 39, 7, 16, 10, 46, 23, 19, 0, 18, 36, 7, 27, 4, 29, 34, 45, 27, 25, 12, 38, 37, 38, 38, 45],dtype=int))
     b = fast_F47_hoch_46(np.array([10, 29, 40, 5, 22, 46, 26, 38, 40, 41, 26, 46, 32, 41, 29, 28, 29, 0, 27, 13, 20, 38, 36, 33, 38, 10, 20, 4, 41, 34, 24, 7, 40, 6, 17, 24, 31, 10, 39, 46, 26, 38, 27, 27, 17, 45],dtype=int))
+    import time
     total_total_start = time.perf_counter()
     try:
-        print(f'\033[34m{main_schoof(a, b, x, y)}')
+        print(f'\033[34m{main_schoof(a, b, x, y,10)}')
     except KeyboardInterrupt:
         pass    
     print(f'\033[34m{time.perf_counter() - total_total_start} total_total_time')
