@@ -1,6 +1,6 @@
 from setuptools import setup, find_packages
 
-VERSION = '2.2.0'
+VERSION = '2.2.1'
 DESCRIPTION = 'ECC Library'
 
 with open("README.md", "r") as f:
