@@ -27,7 +27,7 @@ Um die Funktionalitaeten dieser Bibliothek zu nutzen, koennen Sie die folgenden 
      from elliptic_curves_fq import start_point
      # Beispielcode fuer start_point
      Startpunkt = start_point()
-     print(start_point.on_curve())
+     print(Startpunkt.on_Curve())
      privater_Schlüssel = 1000000
      öffentlicher_Schlüssel = Startpunkt * privater_Schlüssel
      ```
