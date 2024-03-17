@@ -30,6 +30,7 @@ Um die Funktionalitaeten dieser Bibliothek zu nutzen, koennen Sie die folgenden 
      print(Startpunkt.on_Curve())
      privater_Schlüssel = 1000000
      öffentlicher_Schlüssel = Startpunkt * privater_Schlüssel
+     test = öffentlicher_Schlüssel + Startpunkt
      ```
      
    - **Fp:** Stellt ein endlichen Koerper $F_p$ bereit und unterstuetzt arithmetische Operationen wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Ueberschreiben der vorhandenen Operationen von Python. 
