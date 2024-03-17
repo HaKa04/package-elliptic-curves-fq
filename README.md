@@ -163,6 +163,25 @@ Um die Funktionalitaeten dieser Bibliothek zu nutzen, koennen Sie die folgenden 
      print(point + point2 ) # Ausgabe ([12, 8, 1], [1, 0, 5])
      print(point * 3500) #Ausgabe ([8, 8, 2], [11, 11, 2])
      ```
+   - **main_schoof :** Zur Bestimmer Anzahl der Punkten auf einer bestimmten Kurve über dem Koerper $F_{47^{46}}$
+
+     - **Parameter:**
+       - `a` (numpy array): Paramter a der Kurve
+       - `b` (numpy array): Paramter a der Kurve
+       - `x` (numpy array): x Koordinate eines Puntes auf der Kurve
+       - `y` (numpy array): y Koordinate eines Puntes auf der Kurve
+       - cores (int): Zur verfügung stehenden Cores zur paralelisierung. 8 reichen für die maximale Geschwindigkeit.
+     ```python
+     from elliptic_curves_fq import get_randomcurve, fast_schooftest_multy_process
+     import numpy as np
+     q = 47**46
+     Curve = get_randomcurve(47,[1]+ [0]*45 + [2])
+     a = np.array(Curve.a.value,dtype=int)
+     b = np.array(Curve.b.value,dtype=int)
+     x = np.array(Curve.startpoint.x.value,dtype=int)
+     y = np.array(Curve.startpoint.y.value,dtype=int)
+     print(fast_schooftest_multy_process.main_schoof(a,b,x,y,8))
+     ```
 
    - **Gespeicherte Kurven :floppy_disk::**
    Ich stelle Kurven zur Verfuegung, damit nicht immer eine neue ertsellt werden muss. Alle Kurven bis auf die Kurve P_192 wurden von mir generiert. 
