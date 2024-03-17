@@ -229,7 +229,8 @@ class fast_Curve_Point:
     
     def on_Curve(self):
         ' Überprüft ob ein Punkt wirklich auf der Kurve ist, indem es checkt ob y^2 == x^3 + ax + b. Gint Bool zurück'
-        if self.x == "inf" and self.y == "inf" : return True
+        if isinstance(self.x, str):
+            return isinstance(self.y, str)
         else:
             return (self.x * self.x * self.x + self.a * self.x + self.b)  == (self.y * self.y )
 
