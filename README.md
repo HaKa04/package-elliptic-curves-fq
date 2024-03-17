@@ -22,15 +22,15 @@ Um die Funktionalitaeten dieser Bibliothek zu nutzen, koennen Sie die folgenden 
    ```
 
 3. **Klassen, Funktionen und ihre Verwendungen :gear::**
-   - **start_point** Stellt den Startpunkt der sicheren elliptischen Kurve über dem schnell implementierten Körper $F_{47^{46}}$ mit integrierter Aretmetik.
+   - **start_point** Stellt den Startpunkt der sicheren elliptischen Kurve ueber dem schnell implementierten Koerper $F_{47^{46}}$ mit integrierter Aretmetik.
      ```python
      from elliptic_curves_fq import start_point
      # Beispielcode fuer start_point
      Startpunkt = start_point()
      print(Startpunkt.on_Curve())
-     privater_Schlüssel = 1000000
-     öffentlicher_Schlüssel = Startpunkt * privater_Schlüssel
-     test = öffentlicher_Schlüssel + Startpunkt
+     privater_Schluessel = 1000000
+     oeffentlicher_Schluessel = Startpunkt * privater_Schluessel
+     test = oeffentlicher_Schluessel + Startpunkt
      ```
      
    - **Fp:** Stellt ein endlichen Koerper $F_p$ bereit und unterstuetzt arithmetische Operationen wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Ueberschreiben der vorhandenen Operationen von Python. 
@@ -163,14 +163,14 @@ Um die Funktionalitaeten dieser Bibliothek zu nutzen, koennen Sie die folgenden 
      print(point + point2 ) # Ausgabe ([12, 8, 1], [1, 0, 5])
      print(point * 3500) #Ausgabe ([8, 8, 2], [11, 11, 2])
      ```
-   - **main_schoof :** Zur Bestimmer Anzahl der Punkten auf einer bestimmten Kurve über dem Koerper $F_{47^{46}}$
+   - **main_schoof :** Zur Bestimmer Anzahl der Punkten auf einer bestimmten Kurve ueber dem Koerper $F_{47^{46}}$
 
      - **Parameter:**
        - `a` (numpy array): Paramter a der Kurve
        - `b` (numpy array): Paramter a der Kurve
        - `x` (numpy array): x Koordinate eines Puntes auf der Kurve
        - `y` (numpy array): y Koordinate eines Puntes auf der Kurve
-       - cores (int): Zur verfügung stehenden Cores zur paralelisierung. 8 reichen für die maximale Geschwindigkeit.
+       - cores (int): Zur verfuegung stehenden Cores zur paralelisierung. 8 reichen fuer die maximale Geschwindigkeit.
      ```python
      from elliptic_curves_fq import get_randomcurve, fast_schooftest_multy_process
      import numpy as np
