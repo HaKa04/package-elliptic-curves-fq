@@ -21,8 +21,17 @@ Um die Funktionalitaeten dieser Bibliothek zu nutzen, koennen Sie die folgenden 
    import elliptic_curves_fq
    ```
 
-3. **Klassen und ihre Verwendung :gear::**
-
+3. **Klassen, Funktionen und ihre Verwendungen :gear::**
+   - **start_point** Stellt den Startpunkt der sicheren elliptischen Kurve über dem schnell implementierten Körper $F_{47^{46}}$ mit integrierter Aretmetik.
+     ```python
+     from elliptic_curves_fq import start_point
+     # Beispielcode fuer start_point
+     Startpunkt = start_point()
+     print(start_point.on_curve())
+     privater_Schlüssel = 1000000
+     öffentlicher_Schlüssel = Startpunkt * privater_Schlüssel
+     ```
+     
    - **Fp:** Stellt ein endlichen Koerper $F_p$ bereit und unterstuetzt arithmetische Operationen wie Addition, Subtraktion, Multiplikation, Division und Potenzieren durch Ueberschreiben der vorhandenen Operationen von Python. 
 
      - **Parameter:**
@@ -174,7 +183,7 @@ Um die Funktionalitaeten dieser Bibliothek zu nutzen, koennen Sie die folgenden 
      startpunkt = Kurve.startpoint
      ```
 
-4. **Weitere Informationen :page_facing_up::**
+5. **Weitere Informationen :page_facing_up::**
    - Die vollstaendige Dokumentation fuer die Bibliothek finden Sie in meinem [GitHub](https://github.com/HaKa04/package-elliptic-curves-fq) Account im Odrner docs. 
    
 ## License :scroll:
